@@ -9,13 +9,14 @@ from pytesseract import Output
 def getScreenShot():
     global original_image
 
-    img = pyautogui.screenshot()    #返回值为一个Img对象
-    # img = np.array(img)    #将Img对象转换成ndarray
-    # original_image = cv2.cvtColor(img, cv2.COLOR_RGB2BGR)
+    # img = pyautogui.screenshot()    #返回值为一个Img对象
+
+    img = pyautogui.screenshot(region=(0,0, 300, 400))
     img.save('C:/Users/11947/Desktop/pyTestImg.jpg')
 
 
 
+# 安装tesseract ： https://digi.bib.uni-mannheim.de/tesseract/
 def recognition_img():
     pytesseract_cmd = r'C:\Program Files\Tesseract-OCR\tesseract'
     pytesseract.pytesseract.tesseract_cmd = pytesseract_cmd
@@ -24,5 +25,5 @@ def recognition_img():
 
 
 getScreenShot()
-recognition_img()
+# recognition_img()
 
