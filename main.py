@@ -1,20 +1,28 @@
 import threading
 import time
-import win32api
-from pykeyboard import PyKeyboard
-from pymouse import PyMouse
-from pymouse import PyMouseEvent
 import imageScreen
 from imageScreen import ImageScreen
 import random
+
+from pykeyboard import PyKeyboard
+from pymouse import PyMouse
 
 m = PyMouse()
 k = PyKeyboard()
 
 THREAD_STOP = 99
+A_BUTTON = 'j'
+B_BUTTON = 'k'
+UP_BUTTON = 'w'
+DOWN_BUTTON = 'S'
+LEFT_BUTTON = 'a'
+RIGHT_BUTTON = 'd'
 
+# https://www.lfd.uci.edu/~gohlke/pythonlibs/ 安装pyhook
+# https://pypi.org/project/pywin32/#files
+#  pyUserInput install
 def poke_main(thread_name, delay):
-    # count = 0
+    # count = 0z
     # while(count < 5):
     #     time.sleep(delay)
     #     count = count + 1
@@ -22,6 +30,7 @@ def poke_main(thread_name, delay):
     #
     #     k.tap_key(k.enter_key)
 
+    time.sleep(5)
     res = 0
     while res != THREAD_STOP:
         poke_pm()
@@ -35,16 +44,12 @@ def poke_main(thread_name, delay):
 
 
 def poke_random_fire(current):
-    time.sleep(0.5)
+    time.sleep(2)
 
     currentCount = current
 
     while currentCount < 6:
-        rInt = random.randint(1, 10)
-        n = 0
-        while n < rInt:
-            k.tap_key('2')
-            n += 1
+        clickButton('7', 0.2)
 
         res = poke_fire(False)
         print('已经使用了 %d 次，识别结果： %d' % (currentCount , res))
@@ -60,70 +65,88 @@ def poke_random_fire(current):
 # 进入战斗
 def poke_fire(shiny):
     print('进入战斗')
-    time.sleep(4)
+    time.sleep(5)
     # 截图识别是否出现闪光
 
-    imageScreen = ImageScreen()
-    isShiny = imageScreen.check_shiny()
+    # imageScreen = ImageScreen()
+    # imageScreen.check_shiny()
+    isShiny = False
     if isShiny:
         print('遇到闪光精灵了！！！')
         return THREAD_STOP
     else:
-        time.sleep(1)
-        k.tap_key('z')
-        k.tap_key('z')
-
+        clickButton(A_BUTTON, 0.2)
+        clickButton(A_BUTTON, 0.2)
         time.sleep(2)
-        k.tap_key('z')
-        k.tap_key('z')
+        clickButton(A_BUTTON, 0.2)
+        clickButton(A_BUTTON, 0.2)
+        time.sleep(3)
         return 1
 
 
 # 进入pm 出来pm逻辑
 def poke_pm():
-    print('准备恢复')
-    k.tap_key(k.down_key)
-    time.sleep(1)
-    k.tap_key(9)
     time.sleep(2)
+    print('准备恢复')
+    clickButton(DOWN_BUTTON, 0.5)
+    time.sleep(2)
+    clickButton('9',1)
 
     # 回血
-    k.tap_key('z')
+    time.sleep(2)
+    clickButton(A_BUTTON, 0.5)
     time.sleep(1)
-    k.tap_key('z')
-    k.tap_key('z')
+    clickButton(A_BUTTON, 0.5)
     time.sleep(1)
-    k.tap_key('z')
-    k.tap_key('z')
-    k.tap_key('z')
+    clickButton(A_BUTTON, 0.5)
     time.sleep(1)
-
-    k.tap_key(k.down_key)
-    k.tap_key(k.down_key)
-    k.tap_key(k.down_key)
-    k.tap_key(k.down_key)
-    k.tap_key(k.down_key)
-    k.tap_key(k.down_key)
+    clickButton(A_BUTTON, 0.5)
+    time.sleep(1)
+    clickButton(A_BUTTON, 0.5)
+    time.sleep(8)
+    clickButton(A_BUTTON, 0.5)
+    return
 
 
 # 飞翔到龙洞逻辑
 def poke_cave():
     print('进入洞穴')
-    time.sleep(1)
-    k.tap_key(2)
-    k.tap_key(k.down_key)
-    k.tap_key(k.down_key)
-    k.tap_key(k.left_key)
-    k.tap_key('z')
+    time.sleep(2)
+    clickButton(DOWN_BUTTON, 3)
     time.sleep(2)
 
-    k.tap_key(k.up_key)
-    k.tap_key(k.up_key)
-    k.tap_key(k.up_key)
+
+    clickButton('2', 0.5)
+    time.sleep(1)
+    clickButton(DOWN_BUTTON, 0.1)
+    clickButton(LEFT_BUTTON, 0.1)
+    clickButton(A_BUTTON, 0.5)
+    time.sleep(5)
+    clickButton(UP_BUTTON, 2)
 
 
+
+def clickButton(target, delay):
+    k.press_key(target)
+    time.sleep(delay)
+    k.release_key(target)
 
 t1 = threading.Thread(target= poke_main("thread--1",3))
 t1.start()
+
+# poke_pm()
+# poke_cave()
+# poke_random_fire(5)
+# poke_fire()
+
+
+
+
+
+
+
+
+
+
 
 
