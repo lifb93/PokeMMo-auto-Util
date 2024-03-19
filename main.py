@@ -44,11 +44,10 @@ def poke_main(thread_name, delay):
 
 
 def poke_random_fire(current):
-    time.sleep(2)
-
     currentCount = current
 
     while currentCount < 6:
+        time.sleep(2)
         clickButton('7', 0.2)
 
         res = poke_fire(False)
@@ -65,7 +64,7 @@ def poke_random_fire(current):
 # 进入战斗
 def poke_fire(shiny):
     print('进入战斗')
-    time.sleep(5)
+    time.sleep(7)
     # 截图识别是否出现闪光
 
     # imageScreen = ImageScreen()
@@ -75,12 +74,16 @@ def poke_fire(shiny):
         print('遇到闪光精灵了！！！')
         return THREAD_STOP
     else:
-        clickButton(A_BUTTON, 0.2)
-        clickButton(A_BUTTON, 0.2)
-        time.sleep(2)
-        clickButton(A_BUTTON, 0.2)
-        clickButton(A_BUTTON, 0.2)
-        time.sleep(3)
+        clickButton(A_BUTTON, 0.5)
+        time.sleep(0.5)
+        clickButton(A_BUTTON, 0.5)
+        time.sleep(4)
+        clickButton(A_BUTTON, 0.5)
+        time.sleep(0.5)
+        clickButton(A_BUTTON, 0.5)
+        time.sleep(0.5)
+        clickButton(A_BUTTON, 0.5)
+        time.sleep(1)
         return 1
 
 
