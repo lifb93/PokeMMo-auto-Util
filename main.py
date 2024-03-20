@@ -3,6 +3,8 @@ import time
 from pykeyboard import PyKeyboard
 from pymouse import PyMouse
 
+from imageScreen import ImageScreen
+
 m = PyMouse()
 k = PyKeyboard()
 
@@ -55,9 +57,8 @@ def poke_fire(shiny):
     time.sleep(7)
     # 截图识别是否出现闪光
 
-    # imageScreen = ImageScreen()
-    # imageScreen.check_shiny()
-    isShiny = False
+    imageScreen = ImageScreen()
+    isShiny = imageScreen.check_shiny()
     if isShiny:
         print('遇到闪光精灵了！！！')
         return THREAD_STOP
