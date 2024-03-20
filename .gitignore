@@ -2,3 +2,5 @@
 autoPlay.egg-info
 build
 dist
+
+main.spec
