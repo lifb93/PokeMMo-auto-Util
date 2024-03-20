@@ -1,9 +1,5 @@
 import threading
 import time
-import imageScreen
-from imageScreen import ImageScreen
-import random
-
 from pykeyboard import PyKeyboard
 from pymouse import PyMouse
 
@@ -21,15 +17,9 @@ RIGHT_BUTTON = 'd'
 # https://www.lfd.uci.edu/~gohlke/pythonlibs/ 安装pyhook
 # https://pypi.org/project/pywin32/#files
 #  pyUserInput install
-def poke_main(thread_name, delay):
-    # count = 0z
-    # while(count < 5):
-    #     time.sleep(delay)
-    #     count = count + 1
-    #     # print("hello %s %d" % (thread_name, count))
-    #
-    #     k.tap_key(k.enter_key)
 
+
+def poke_gree_dragon():
     time.sleep(5)
     res = 0
     while res != THREAD_STOP:
@@ -40,8 +30,6 @@ def poke_main(thread_name, delay):
 
     if res == THREAD_STOP:
         print('遇到闪光精灵了！！！')
-
-
 
 def poke_random_fire(current):
     currentCount = current
@@ -77,14 +65,15 @@ def poke_fire(shiny):
         clickButton(A_BUTTON, 0.5)
         time.sleep(0.5)
         clickButton(A_BUTTON, 0.5)
-        time.sleep(4)
+        time.sleep(5)
         clickButton(A_BUTTON, 0.5)
         time.sleep(0.5)
         clickButton(A_BUTTON, 0.5)
         time.sleep(0.5)
         clickButton(A_BUTTON, 0.5)
         time.sleep(1)
-        return 1
+
+    return 1
 
 
 # 进入pm 出来pm逻辑
@@ -127,21 +116,20 @@ def poke_cave():
     time.sleep(5)
     clickButton(UP_BUTTON, 2)
 
-
-
 def clickButton(target, delay):
     k.press_key(target)
     time.sleep(delay)
     k.release_key(target)
 
-t1 = threading.Thread(target= poke_main("thread--1",3))
-t1.start()
+def __poke_main__():
+    t1 = threading.Thread(target=poke_gree_dragon)
+    t1.start()
 
+__poke_main__()
 # poke_pm()
 # poke_cave()
 # poke_random_fire(5)
 # poke_fire()
-
 
 
 
