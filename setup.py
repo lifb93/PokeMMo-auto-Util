@@ -12,7 +12,11 @@ setup(
             'pyHook==1.5.1',
             'pywin32==306',
             'pyUserInput==0.1.10',
-            'pyinstaller>=5.13.2'
+            'pyinstaller>=5.13.2',
+            'PyScreeze==0.1.30'
+            'pyautogui==0.9.54',
+            'easyocr==1.7.1'
+
         ],
         dependency_links = [
             "https://download.lfd.uci.edu/pythonlibs/archived/cp37/pyHook-1.5.1-cp37-cp37m-win_amd64.whl",

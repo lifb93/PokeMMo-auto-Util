@@ -8,6 +8,7 @@ import easyocr
 
 IMAGE_URL = r"C:/Users/11947/Desktop/3.png"
 
+# -i https://mirrors.aliyun.com/pypi/simple some-package
 
 class ImageScreen(object):
     pass
@@ -15,7 +16,7 @@ class ImageScreen(object):
 
     def getScreenShot(self, topX, topY, width, high, url):
         # img = pyautogui.screenshot()    #返回值为一个Img对象
-        img = pyautogui.screenshot(region=(topX,topY,width,high))
+        img = pyautogui.screenshot(IMAGE_URL,region=(topX,topY,width,high))
         img.save(url)
 
     # 安装tesseract ： https://digi.bib.uni-mannheim.de/tesseract/
@@ -27,7 +28,7 @@ class ImageScreen(object):
         img = Image.open(url)
         # text = pytesseract.image_to_string(img, lang='chi_sim')
 
-        reader = easyocr.Reader(['ch_sim'],gpu=False)
+        reader = easyocr.Reader(['ch_sim', 'en'],gpu=False)
         text = reader.readtext(url,detail=0)
 
         print(text)
@@ -42,7 +43,7 @@ class ImageScreen(object):
     def check_shiny(self):
         time.sleep(1)
         c = ImageScreen()
-        c.getScreenShot(50,670, 300, 300, IMAGE_URL)
+        c.getScreenShot(0,750, 500, 300, IMAGE_URL)
         return c.recognition_img(IMAGE_URL)
 
 
@@ -56,6 +57,7 @@ class ImageScreen(object):
 
 # c = ImageScreen()
 # c.getScreenShot()
+# print(c.check_shiny())
 # print(c.check_shiny())
 # print(c.check_shiny())
 

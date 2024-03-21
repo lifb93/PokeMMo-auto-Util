@@ -122,22 +122,24 @@ class PokeAction(Action):
             self.clickButton(A_BUTTON, 0.5)
             time.sleep(0.5)
             self.clickButton(A_BUTTON, 0.5)
-            time.sleep(5)
+            time.sleep(2)
+            self.clickButton(A_BUTTON, 0.5)
+            time.sleep(7)
             self.clickButton(A_BUTTON, 0.5)
             time.sleep(0.5)
             self.clickButton(A_BUTTON, 0.5)
             time.sleep(0.5)
             self.clickButton(A_BUTTON, 0.5)
-            time.sleep(1)
+            time.sleep(0.5)
+            self.clickButton(A_BUTTON, 0.5)
+            time.sleep(2)
 
         return 1
 
 
     # 进入pm 出来pm逻辑
     def poke_pm(self):
-        time.sleep(2)
         print('准备恢复')
-        self.clickButton(DOWN_BUTTON, 0.5)
         time.sleep(2)
         self.clickButton('9',1)
 
@@ -169,6 +171,8 @@ class PokeApplication(object):
         time.sleep(5)
         res = 0
         while res != THREAD_STOP:
+            time.sleep(2)
+            self.pokeAction.clickButton(DOWN_BUTTON, 0.5)
             self.pokeAction.poke_pm()
             self.poke_cave()
             res = self.pokeAction.poke_random_fire(res)
