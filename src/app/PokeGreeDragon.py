@@ -1,33 +1,39 @@
 from src.common import PokeConfig
-
 import time
-class PokeGreeDragon(object):
-    def __init__(self, pokeAction):
-        self.pokeAction = pokeAction
+
+from src.common.PokeAction import PokeAction
+
+
+class PokeGreeDragon(PokeAction):
+    def __init__(self):
+        super(PokeGreeDragon, self).__init__()
+
+    def action_des(self):
+        self.poke_gree_dragon()
+
+    def action_inf(self, res):
+        time.sleep(2)
+        self.clickButton(PokeConfig.DOWN_BUTTON, 0.5)
+        self.poke_pm()
+        self.poke_cave()
+        return self.poke_sweet_scent_fire(res)
 
     def poke_gree_dragon(self):
-        time.sleep(5)
-        res = 0
-        while res != PokeConfig.THREAD_STOP:
-            time.sleep(2)
-            self.pokeAction.clickButton(PokeConfig.DOWN_BUTTON, 0.5)
-            self.pokeAction.poke_pm()
-            self.poke_cave()
-            res = self.pokeAction.poke_random_fire(res)
-            print('执行完毕： %d' % res)
-
-        if res == PokeConfig.THREAD_STOP:
-            print('遇到闪光精灵了！！！')
+        print("合众地区刷闪光绿龙")
+        print("依赖功能：飞空，香甜气息，瞬间移动")
+        print("pm: 战斗公园的pm")
+        print("站位: 战斗公园的pm外面")
+        print("5秒后开始，请切换到游戏界面")
 
     # 飞翔到龙洞逻辑
     def poke_cave(self):
         print('进入洞穴')
 
-        self.pokeAction.clickButton('2', 0.5)
+        self.clickButton('2', 0.5)
         time.sleep(1)
-        self.pokeAction.clickButton(PokeConfig.DOWN_BUTTON, 0.1)
-        self.pokeAction.clickButton(PokeConfig.LEFT_BUTTON, 0.1)
-        self.pokeAction.clickButton(PokeConfig.A_BUTTON, 0.5)
+        self.clickButton(PokeConfig.DOWN_BUTTON, 0.1)
+        self.clickButton(PokeConfig.LEFT_BUTTON, 0.1)
+        self.clickButton(PokeConfig.A_BUTTON, 0.5)
         time.sleep(5)
-        self.pokeAction.clickButton(PokeConfig.UP_BUTTON, 2)
+        self.clickButton(PokeConfig.UP_BUTTON, 2)
 

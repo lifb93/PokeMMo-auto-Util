@@ -1,4 +1,6 @@
 import threading
+
+from src.app.EmeraldBattleParkUpLevel import EmeraldBattleParkUpLevel
 from src.common.PokeAction import PokeAction
 from src.app.PokeGreeDragon import PokeGreeDragon
 
@@ -10,9 +12,9 @@ from src.app.PokeGreeDragon import PokeGreeDragon
 def __poke_main__():
     # pr = PreparePokeConfig()
     # pr.prepare_poke()
-    action = PokeAction()
-    poke = PokeGreeDragon(action)
-    t1 = threading.Thread(target=poke.poke_gree_dragon())
+    poke = PokeGreeDragon()
+    poke2 = EmeraldBattleParkUpLevel()
+    t1 = threading.Thread(target=poke2.action_loop(0))
     t1.start()
 
 __poke_main__()
