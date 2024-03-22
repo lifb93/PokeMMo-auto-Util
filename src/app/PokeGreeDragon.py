@@ -8,7 +8,7 @@ class PokeGreeDragon(PokeAction):
     def __init__(self):
         super(PokeGreeDragon, self).__init__()
 
-    def action_des(self):
+    def action_des_and_init(self):
         self.poke_gree_dragon()
 
     def action_inf(self, res):

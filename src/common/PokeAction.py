@@ -13,14 +13,14 @@ class PokeAction(Action):
         super(PokeAction, self).__init__()
         self.imageScreen = ImageScreen()
 
-    def action_des(self):
+    def action_des_and_init(self):
         pass
 
     def action_inf(self, res):
         pass
 
     def action_loop(self, target):
-        self.action_des()
+        self.action_des_and_init()
         time.sleep(5)
         res = target
         while res != PokeConfig.THREAD_STOP:
@@ -29,6 +29,25 @@ class PokeAction(Action):
 
         if res == PokeConfig.THREAD_STOP:
             print('遇到闪光精灵了！！！')
+
+
+    # Horizontal 水平的
+    # Vertical 垂直的
+    def poke_random_scent_fire(self, direction):
+        isFire = False
+        while not isFire:
+            if direction in 'Horizontal':
+                self.clickButton(PokeConfig.LEFT_BUTTON, 3)
+                self.clickButton(PokeConfig.RIGHT_BUTTON, 3)
+            else:
+                self.clickButton(PokeConfig.UP_BUTTON, 3)
+                self.clickButton(PokeConfig.DOWN_BUTTON, 3)
+
+                isFire = self.imageScreen.check_fire() is None
+                if isFire:
+                    print('进入战斗')
+
+        return self.poke_fire()
 
 
     def poke_sweet_scent_fire(self,current):
@@ -61,6 +80,7 @@ class PokeAction(Action):
             print('遇到闪光精灵了！！！')
             return PokeConfig.THREAD_STOP
         else:
+            time.sleep(5)
             self.fire(0)
 
         return 1

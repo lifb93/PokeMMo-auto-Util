@@ -8,7 +8,7 @@ class EmeraldBattleParkUpLevel(PokeAction):
     def __init__(self):
         super(EmeraldBattleParkUpLevel, self).__init__()
 
-    def action_des(self):
+    def action_des_and_init(self):
         pass
         self.emeraldBattleParkUpLevel()
 
