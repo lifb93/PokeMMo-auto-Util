@@ -17,10 +17,11 @@ class EmeraldBattleParkUpLevel(PokeAction):
         self.poke_pm()
         self.clickButton(PokeConfig.BICYCLE, 0.2)
 
-        self.clickButton(PokeConfig.DOWN_BUTTON, 2)
-        self.clickButton(PokeConfig.RIGHT_BUTTON, 2)
         self.clickButton(PokeConfig.DOWN_BUTTON, 1)
-        self.clickButton(PokeConfig.RIGHT_BUTTON, 5)
+        self.clickButton(PokeConfig.RIGHT_BUTTON, 2)
+        self.clickButton(PokeConfig.DOWN_BUTTON, 0.2)
+        self.clickButton(PokeConfig.RIGHT_BUTTON, 1)
+        self.clickButton(PokeConfig.DOWN_BUTTON, 0.2)
 
         self.surfing()
         return self.poke_sweet_scent_fire(res)

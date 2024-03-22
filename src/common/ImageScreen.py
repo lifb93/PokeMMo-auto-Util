@@ -108,7 +108,7 @@ class ImageScreen(object):
     def check_forget_skill(self):
         time.sleep(1)
         self.getScreenShot(self.battle_win[0],self.battle_win[1], self.battle_win[2], self.battle_win[3], IMAGE_URL)
-        return self.recognition_img(IMAGE_URL, ['掌','握','四个','技','能'])
+        return self.recognition_img(IMAGE_URL, ['掌握','四个','技能'])
 
 
     def check_fire(self):

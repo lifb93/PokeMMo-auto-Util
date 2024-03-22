@@ -139,7 +139,7 @@ class PokeAction(Action):
         self.clickButton(PokeConfig.MOVEMENT,1)
 
         # 回血
-        time.sleep(2)
+        time.sleep(3)
         self.clickButton(PokeConfig.A_BUTTON, 0.5)
         time.sleep(1)
         self.clickButton(PokeConfig.A_BUTTON, 0.5)
@@ -150,7 +150,9 @@ class PokeAction(Action):
         time.sleep(1)
         self.clickButton(PokeConfig.A_BUTTON, 0.5)
         time.sleep(8)
-        self.clickButton(PokeConfig.A_BUTTON, 0.5)
+        self.clickButton(PokeConfig.B_BUTTON, 0.5)
+        time.sleep(2)
+        self.clickButton(PokeConfig.B_BUTTON, 0.5)
         time.sleep(2)
         self.clickButton(PokeConfig.DOWN_BUTTON, 3)
         time.sleep(2)
@@ -215,4 +217,4 @@ class PokeAction(Action):
 
 
 # p = PokeAction()
-# p.poke_fire()
+# p.poke_pm()
