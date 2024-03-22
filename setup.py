@@ -15,8 +15,9 @@ setup(
             'pyinstaller>=5.13.2',
             'PyScreeze==0.1.30'
             'pyautogui==0.9.54',
-            'easyocr==1.7.1'
-
+            'easyocr==1.7.1',
+            'collective.ordereddict==0.1'
+            'urllib3==1.25.11'
         ],
         dependency_links = [
             "https://download.lfd.uci.edu/pythonlibs/archived/cp37/pyHook-1.5.1-cp37-cp37m-win_amd64.whl",
