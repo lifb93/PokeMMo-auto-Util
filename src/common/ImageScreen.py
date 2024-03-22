@@ -18,7 +18,7 @@ class ImageScreen(object):
         self.filter_list= ['Suicune', 'Entei', 'Raikou', 'Zapdos', 'Articuno', 'Moltres']
         self.filter_list_zh= [ '水君', '炎帝', '雷公', '闪电鸟', '急冻鸟', '火焰鸟']
         self.battle_win = [0, 750, 500, 300]
-        self.poke_win = [500, 200, 900, 400]
+        self.poke_win = [200, 50, 1300, 300]
 
 
     def scan_win(self):
@@ -87,7 +87,7 @@ class ImageScreen(object):
         time.sleep(1)
         self.getScreenShot(self.poke_win[0],self.poke_win[1], self.poke_win[2], self.poke_win[3], IMAGE_URL)
         target = self.filter_shiny + self.filter_list_zh + self.filter_list
-        print("filter list :  %s " % (target))
+        # print("filter list :  %s " % (target))
         return self.recognition_img(IMAGE_URL, target)
 
         # rInt = random.randint(1,10)
@@ -100,9 +100,9 @@ class ImageScreen(object):
     def check_target_poke(self, tarItem):
         time.sleep(1)
         self.getScreenShot(self.poke_win[0],self.poke_win[1], self.poke_win[2], self.poke_win[3], IMAGE_URL)
-        target = []
+        target = self.filter_shiny + self.filter_list_zh + self.filter_list
         target.append(tarItem)
-        print("filter list :  %s " % (target))
+        # print("filter list :  %s " % (target))
         return self.recognition_img(IMAGE_URL, target)
 
     def check_forget_skill(self):
@@ -121,8 +121,8 @@ class ImageScreen(object):
 
 # c = ImageScreen()
 # c.addFiltItem('TestStr')
+# print(c.check_default_list())
 # print(c.check_fire())
-# print(c.check_shiny())
 # print(c.check_shiny())
 # print(c.check_shiny())
 
