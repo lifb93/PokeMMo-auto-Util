@@ -1,0 +1,10 @@
+
+
+
+THREAD_STOP = 99
+A_BUTTON = 'j'
+B_BUTTON = 'k'
+UP_BUTTON = 'w'
+DOWN_BUTTON = 'S'
+LEFT_BUTTON = 'a'
+RIGHT_BUTTON = 'd'
