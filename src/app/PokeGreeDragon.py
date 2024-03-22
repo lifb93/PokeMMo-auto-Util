@@ -1,8 +1,7 @@
-import PokeConfig
-
+from src.common import PokeConfig
 
 import time
-class PokeApplication(object):
+class PokeGreeDragon(object):
     def __init__(self, pokeAction):
         self.pokeAction = pokeAction
 

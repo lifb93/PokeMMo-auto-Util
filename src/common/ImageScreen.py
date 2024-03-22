@@ -16,7 +16,7 @@ class ImageScreen(object):
 
     def getScreenShot(self, topX, topY, width, high, url):
         # img = pyautogui.screenshot()    #返回值为一个Img对象
-        img = pyautogui.screenshot(IMAGE_URL,region=(topX,topY,width,high))
+        img = pyautogui.screenshot(url,region=(topX,topY,width,high))
         img.save(url)
 
     # 安装tesseract ： https://digi.bib.uni-mannheim.de/tesseract/

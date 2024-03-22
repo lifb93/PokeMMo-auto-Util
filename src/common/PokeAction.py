@@ -1,9 +1,9 @@
 
 import time
 
-import PokeConfig
-from Action import Action
-from imageScreen import ImageScreen
+from src.common import PokeConfig
+from src.common.Action import Action
+from src.common.ImageScreen import ImageScreen
 
 
 class PokeAction(Action):

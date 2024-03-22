@@ -1,4 +1,4 @@
-import PokeConfig
+from src.common import PokeConfig
 
 
 class PreparePokeConfig(object):

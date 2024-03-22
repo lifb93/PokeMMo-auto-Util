@@ -8,3 +8,4 @@ UP_BUTTON = 'w'
 DOWN_BUTTON = 'S'
 LEFT_BUTTON = 'a'
 RIGHT_BUTTON = 'd'
+
