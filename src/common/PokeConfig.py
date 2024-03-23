@@ -18,6 +18,8 @@ KILL_TARGET_POKE = False
 # 杀死指定宝可梦
 TARGET_POKE_BE_KILL = ''
 
+# 学习技能开关
+LEARN_SKILL_SWITCH = False
 # 是否学习新技能
 LEARN_SKILL = True
 

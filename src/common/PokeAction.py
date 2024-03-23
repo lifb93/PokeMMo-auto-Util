@@ -106,23 +106,24 @@ class PokeAction(Action):
         self.clickButton(PokeConfig.A_BUTTON, 0.5)
         time.sleep(2)
 
-        forget = self.imageScreen.check_forget_skill()
-        print("需要忘记技能： %s" % forget)
-        if PokeConfig.LEARN_SKILL and forget:
-            #睡眠线程 让用户去学习技能
-            print("请忘记技能，10秒钟之后自动取消学习")
-            time.sleep(15)
+        if PokeConfig.LEARN_SKILL_SWITCH:
+            forget = self.imageScreen.check_forget_skill()
+            print("需要忘记技能： %s" % forget)
+            if PokeConfig.LEARN_SKILL and forget:
+                #睡眠线程 让用户去学习技能
+                print("请忘记技能，10秒钟之后自动取消学习")
+                time.sleep(15)
 
-        if forget:
-            print("取消学习技能中...")
-            self.clickButton(PokeConfig.B_BUTTON, 0.5)
-            time.sleep(0.5)
-            self.clickButton(PokeConfig.B_BUTTON, 0.5)
-            time.sleep(0.5)
-            self.clickButton(PokeConfig.A_BUTTON, 0.5)
-            time.sleep(0.5)
-            self.clickButton(PokeConfig.A_BUTTON, 0.5)
-            time.sleep(2)
+            if forget:
+                print("取消学习技能中...")
+                self.clickButton(PokeConfig.B_BUTTON, 0.5)
+                time.sleep(0.5)
+                self.clickButton(PokeConfig.B_BUTTON, 0.5)
+                time.sleep(0.5)
+                self.clickButton(PokeConfig.A_BUTTON, 0.5)
+                time.sleep(0.5)
+                self.clickButton(PokeConfig.A_BUTTON, 0.5)
+                time.sleep(2)
 
 
     def poke_fire_target(self, skill, target):
