@@ -80,7 +80,7 @@ class PokeAction(Action):
             print('遇到闪光精灵了！！！')
             return PokeConfig.THREAD_STOP
         else:
-            time.sleep(5)
+            time.sleep(2)
             self.fire(0)
 
         return 1
@@ -104,7 +104,8 @@ class PokeAction(Action):
         self.clickButton(PokeConfig.A_BUTTON, 0.5)
         time.sleep(0.5)
         self.clickButton(PokeConfig.A_BUTTON, 0.5)
-        time.sleep(2)
+        time.sleep(0.5)
+        self.clickButton(PokeConfig.A_BUTTON, 0.5)
 
         if PokeConfig.LEARN_SKILL_SWITCH:
             forget = self.imageScreen.check_forget_skill()
@@ -124,6 +125,8 @@ class PokeAction(Action):
                 time.sleep(0.5)
                 self.clickButton(PokeConfig.A_BUTTON, 0.5)
                 time.sleep(2)
+        # else:
+            # time.sleep(3)
 
 
     def poke_fire_target(self, skill, target):
