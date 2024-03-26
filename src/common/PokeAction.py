@@ -35,6 +35,7 @@ class PokeAction(Action):
     # Vertical 垂直的
     def poke_random_scent_fire(self, direction):
         isFire = False
+        sp = None
         while not isFire:
             if direction in 'Horizontal':
                 self.clickButton(PokeConfig.LEFT_BUTTON, 3)
@@ -43,11 +44,11 @@ class PokeAction(Action):
                 self.clickButton(PokeConfig.UP_BUTTON, 3)
                 self.clickButton(PokeConfig.DOWN_BUTTON, 3)
 
-                isFire = self.imageScreen.check_fire() is None
+                sp = self.imageScreen.check_fire()
+                isFire = sp.isTarget
                 if isFire:
                     print('进入战斗')
-
-        return self.poke_fire()
+        return sp
 
 
     def poke_sweet_scent_fire(self,current):
@@ -74,8 +75,9 @@ class PokeAction(Action):
         time.sleep(7)
         # 截图识别是否出现闪光
 
-        isShiny = self.imageScreen.check_default_list()
-        print('是否遇到闪光 %d' % isShiny)
+        sp = self.imageScreen.check_default_list()
+        isShiny = sp.isTarget
+        print('是否遇到闪光 %d , 出现的精灵是 %s' % (isShiny, sp.__str__()))
         if isShiny:
             print('遇到闪光精灵了！！！')
             return PokeConfig.THREAD_STOP
@@ -84,6 +86,21 @@ class PokeAction(Action):
             self.fire(0)
 
         return 1
+
+    def poke_fire_with_sp(self, sp, skillIndex):
+        print('进入战斗')
+        time.sleep(7)
+
+        text = sp.text
+        sp2 = self.imageScreen.check_default_list_with_text(text)
+        isShiny = sp2.isTarget
+        print('是否遇到闪光 %d , 出现的精灵是 %s' % (isShiny, sp2.__str__()))
+        if isShiny:
+            print('遇到闪光精灵了！！！')
+            return PokeConfig.THREAD_STOP
+        else:
+            time.sleep(2)
+            self.fire(skillIndex)
 
 
     # 战斗处理
@@ -216,7 +233,6 @@ class PokeAction(Action):
         time.sleep(0.5)
         self.clickButton(PokeConfig.A_BUTTON, 0.5)
         time.sleep(8)
-
 
 
 
