@@ -77,7 +77,7 @@ class PokeAction(Action):
 
         sp = self.imageScreen.check_default_list()
         isShiny = sp.isTarget
-        print('是否遇到闪光 %d , 出现的精灵是 %s' % (isShiny, sp.__str__()))
+        print('是否遇到闪光 %d , 出现的精灵是 %s' % (isShiny, sp.to_str()))
         if isShiny:
             print('遇到闪光精灵了！！！')
             return PokeConfig.THREAD_STOP
@@ -237,4 +237,4 @@ class PokeAction(Action):
 
 
 # p = PokeAction()
-# p.poke_pm()
+# p.poke_fire()

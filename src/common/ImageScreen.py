@@ -47,17 +47,18 @@ class ImageScreen(object):
 
     def read_text(self, url):
         reader = easyocr.Reader(['ch_sim', 'en'], gpu=False)
-        text = reader.readtext(url)
+        text = reader.readtext(url, detail=0)
         return text
 
-    def recognition_text(self, screenPoke, text):
+    def recognition_text(self,  text):
+        screenPoke = ScreenPoke()
         size = 0
         poke = None
         for item in text:
             if poke is None:
-                if 'Lv' in item:
-                    index = item.index('Lv')
-                    poke = item[0, index]
+                if 'L' in item:
+                    index = item.index('L')
+                    poke = item[0:index]
                     size += 1
             else:
                 if poke in item:
@@ -77,9 +78,9 @@ class ImageScreen(object):
         # pytesseract.pytesseract.tesseract_cmd = pytesseract_cmd
         # img = Image.open(url)
         # text = pytesseract.image_to_string(img, lang='chi_sim')
+        print(target)
 
-        sp = ScreenPoke()
-        self.recognition_text(sp, text)
+        sp = self.recognition_text(text)
         has_target = False
         for item in text:
             if not has_target:
@@ -91,13 +92,13 @@ class ImageScreen(object):
 
         sp.__set_is_target__(has_target)
         sp.__set_text__(text)
+
         return sp
 
 
     def recognition_poke(self, text, target):
 
-        sp = ScreenPoke()
-        self.recognition_text(sp, text)
+        sp = self.recognition_text(text)
         has_target = False
         for item in text:
             if target in item:
@@ -111,16 +112,16 @@ class ImageScreen(object):
 
     def check_shiny(self):
         time.sleep(1)
-        self.getScreenShot(self.poke_win[0],self.poke_win[1], self.poke_win[2], self.poke_win[3], IMAGE_URL)
         print("filter list :  %s " % (self.filter_shiny))
+        self.getScreenShot(self.poke_win[0],self.poke_win[1], self.poke_win[2], self.poke_win[3], IMAGE_URL)
         text = self.read_text(IMAGE_URL)
         print(text)
         return self.recognition_img(text, self.filter_shiny).isTarget
 
     def check_default_list(self):
         time.sleep(1)
-        self.getScreenShot(self.poke_win[0],self.poke_win[1], self.poke_win[2], self.poke_win[3], IMAGE_URL)
         target = self.filter_shiny + self.filter_list_zh + self.filter_list
+        self.getScreenShot(self.poke_win[0],self.poke_win[1], self.poke_win[2], self.poke_win[3], IMAGE_URL)
         text = self.read_text(IMAGE_URL)
         print(text)
         return self.recognition_img(text, target)
@@ -134,9 +135,9 @@ class ImageScreen(object):
 
     def check_target_poke(self, tarItem):
         time.sleep(1)
-        self.getScreenShot(self.poke_win[0],self.poke_win[1], self.poke_win[2], self.poke_win[3], IMAGE_URL)
         target = self.filter_shiny + self.filter_list_zh + self.filter_list
         target.append(tarItem)
+        self.getScreenShot(self.poke_win[0],self.poke_win[1], self.poke_win[2], self.poke_win[3], IMAGE_URL)
         text = self.read_text(IMAGE_URL)
         print(text)
         return self.recognition_img(text, target)

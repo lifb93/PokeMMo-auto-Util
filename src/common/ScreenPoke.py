@@ -20,10 +20,9 @@ class ScreenPoke(object):
     def __set_text__(self, text):
         self.text = text
 
-    def __str__(self):
-        print('isTarget %s , '
-              'poke %s ,'
-              'size %d ,'
-              % (self.isTarget,
-                 self.poke,
-                 self.size))
+    def to_str(self):
+        text = ('ScreenPoke : '
+                ' isTarget ' + str(self.isTarget) +
+                ' poke ' + self.poke +
+                ' size ' + str(self.size))
+        return text

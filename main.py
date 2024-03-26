@@ -14,9 +14,9 @@ def __poke_main__():
     # pr = PreparePokeConfig()
     # pr.prepare_poke()
     poke = PokeGreeDragon()
-    five = FiveIslandEncounter()
+    # five = FiveIslandEncounter()
     poke2 = EmeraldBattleParkUpLevel()
-    t1 = threading.Thread(target=five.action_loop(0))
+    t1 = threading.Thread(target=poke.action_loop(0))
     t1.start()
 
 __poke_main__()
