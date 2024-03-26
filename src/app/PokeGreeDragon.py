@@ -14,7 +14,7 @@ class PokeGreeDragon(PokeAction):
     def action_inf(self, res):
         time.sleep(2)
         self.clickButton(PokeConfig.DOWN_BUTTON, 0.5)
-        self.poke_pm()
+        self.poke_pm(3)
         self.poke_cave()
         return self.poke_sweet_scent_fire(res)
 

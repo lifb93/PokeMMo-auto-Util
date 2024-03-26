@@ -38,11 +38,11 @@ class PokeAction(Action):
         sp = None
         while not isFire:
             if direction in 'Horizontal':
-                self.clickButton(PokeConfig.LEFT_BUTTON, 3)
-                self.clickButton(PokeConfig.RIGHT_BUTTON, 3)
+                self.clickButton(PokeConfig.LEFT_BUTTON, 1)
+                self.clickButton(PokeConfig.RIGHT_BUTTON, 1)
             else:
-                self.clickButton(PokeConfig.UP_BUTTON, 3)
-                self.clickButton(PokeConfig.DOWN_BUTTON, 3)
+                self.clickButton(PokeConfig.UP_BUTTON, 1)
+                self.clickButton(PokeConfig.DOWN_BUTTON, 1)
 
                 sp = self.imageScreen.check_fire()
                 isFire = sp.isTarget
@@ -154,7 +154,7 @@ class PokeAction(Action):
 
 
     # 进入pm 出来pm逻辑
-    def poke_pm(self):
+    def poke_pm(self, second):
         print('准备恢复')
         time.sleep(2)
         self.clickButton(PokeConfig.MOVEMENT,1)
@@ -175,7 +175,7 @@ class PokeAction(Action):
         time.sleep(2)
         self.clickButton(PokeConfig.B_BUTTON, 0.5)
         time.sleep(2)
-        self.clickButton(PokeConfig.DOWN_BUTTON, 3)
+        self.clickButton(PokeConfig.DOWN_BUTTON, second)
         time.sleep(2)
         return
 
