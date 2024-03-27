@@ -4,9 +4,9 @@ import time
 from src.common.PokeAction import PokeAction
 
 
-class FiveIslandEncounter(PokeAction):
+class JohtoBlackthornCityEncounter(PokeAction):
     def __init__(self):
-        super(FiveIslandEncounter, self).__init__()
+        super(JohtoBlackthornCityEncounter, self).__init__()
 
     def action_des_and_init(self):
         pass
@@ -47,22 +47,20 @@ class FiveIslandEncounter(PokeAction):
             self.clickButton(PokeConfig.BICYCLE, 0.2)
 
             self.clickButton(PokeConfig.LEFT_BUTTON, 2)
-            self.clickButton(PokeConfig.DOWN_BUTTON, 0.3)
-
-            self.clickButton(PokeConfig.RIGHT_BUTTON, 2)
             self.clickButton(PokeConfig.DOWN_BUTTON, 1)
+
             self.clickButton(PokeConfig.RIGHT_BUTTON, 1)
-            self.clickButton(PokeConfig.UP_BUTTON, 1)
+            self.clickButton(PokeConfig.DOWN_BUTTON, 0.5)
 
         return PokeConfig.DEFAULT_AUTO
 
 
     def fiveIslandEncounterDes(self):
-        print("五岛遭遇神鸟和刷钱")
+        print("成都烟墨市遭遇神兽和刷钱")
         print("依赖功能：单车，香甜气息，瞬间移动")
         print("请调整队伍第一只怪的技能： 聚宝功 放到技能一， 群体攻击 放到技能二")
-        print("pm: 五岛pm")
-        print("站位: 五岛pm外面")
+        print("pm: 烟墨市pm")
+        print("站位: 烟墨市pm外面")
         isHorizontal = input("是否水平遇怪？[Y/N]:")
         self.horValue = 'Horizontal'
         if isHorizontal != 'Y' and isHorizontal != 'y':
@@ -80,7 +78,8 @@ class FiveIslandEncounter(PokeAction):
         print("5秒后开始，请切换到游戏界面")
 
 
-# c = FiveIslandEncounter()
+
+# c = JohtoBlackthornCityEncounter()
 # c.action_loop(1)
 
 
