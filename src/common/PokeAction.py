@@ -37,17 +37,32 @@ class PokeAction(Action):
         isFire = False
         sp = None
         while not isFire:
-            if direction in 'Horizontal':
-                self.clickButton(PokeConfig.LEFT_BUTTON, 1)
-                self.clickButton(PokeConfig.RIGHT_BUTTON, 1)
-            else:
-                self.clickButton(PokeConfig.UP_BUTTON, 1)
-                self.clickButton(PokeConfig.DOWN_BUTTON, 1)
+            count = 0
+            while count < 3:
+                if direction in 'Horizontal':
+                    self.clickButton(PokeConfig.RIGHT_BUTTON, 0.5)
+                    self.clickButton(PokeConfig.LEFT_BUTTON, 0.5)
+                    self.clickButton(PokeConfig.RIGHT_BUTTON, 0.5)
+                    self.clickButton(PokeConfig.LEFT_BUTTON, 0.5)
+                else:
+                    self.clickButton(PokeConfig.DOWN_BUTTON, 0.5)
+                    self.clickButton(PokeConfig.UP_BUTTON, 0.5)
+                    self.clickButton(PokeConfig.DOWN_BUTTON, 0.5)
+                    self.clickButton(PokeConfig.UP_BUTTON, 0.5)
+                count += 1
+                time.sleep(1)
 
-                sp = self.imageScreen.check_fire()
-                isFire = sp.isTarget
-                if isFire:
-                    print('进入战斗')
+            sp = self.imageScreen.check_default_list()
+            poke = sp.poke
+            if poke is not None:
+                print('已经进入战斗，复位按键')
+                isFire = True
+
+                # 复位按键到技能一
+                time.sleep(5)
+                self.clickButton(PokeConfig.UP_BUTTON, 0.5)
+                self.clickButton(PokeConfig.LEFT_BUTTON, 0.5)
+
         return sp
 
 
@@ -66,7 +81,7 @@ class PokeAction(Action):
                 currentCount += res
 
         print('甜甜香气已经没了')
-        return 0
+        return PokeConfig.DEFAULT_AUTO
 
 
     # 进入战斗
@@ -83,9 +98,8 @@ class PokeAction(Action):
             return PokeConfig.THREAD_STOP
         else:
             time.sleep(2)
-            self.fire(0)
-
-        return 1
+            self.fire(PokeConfig.FIRST_SKILL)
+            return PokeConfig.DEFAULT_AUTO
 
     def poke_fire_with_sp(self, sp, skillIndex):
         print('进入战斗')
@@ -94,25 +108,35 @@ class PokeAction(Action):
         text = sp.text
         sp2 = self.imageScreen.check_default_list_with_text(text)
         isShiny = sp2.isTarget
-        print('是否遇到闪光 %d , 出现的精灵是 %s' % (isShiny, sp2.__str__()))
+        # print('是否遇到闪光 %d , 出现的精灵是 %s' % (isShiny, sp2.to_str()))
         if isShiny:
             print('遇到闪光精灵了！！！')
             return PokeConfig.THREAD_STOP
         else:
             time.sleep(2)
             self.fire(skillIndex)
+            return PokeConfig.DEFAULT_AUTO
 
 
     # 战斗处理
     def fire(self, skill):
-        if skill == 1:
-            self.second_skill()
-        elif skill == 2:
-            self.third_skill()
-        elif skill == 3:
-            self.fourth_skill()
-        else:
+        if skill == PokeConfig.FIRST_SKILL:
+            print("使用 FIRST_SKILL")
             self.first_skill()
+        elif skill == PokeConfig.SECOND_SKILL:
+            print("使用 SECOND_SKILL")
+            self.second_skill()
+        elif skill == PokeConfig.THIRD_SKILL:
+            print("使用 THIRD_SKILL")
+            self.third_skill()
+        elif skill == PokeConfig.FOURTH_SKILL:
+            print("使用 FOURTH_SKILL")
+            self.fourth_skill()
+        elif skill == PokeConfig.ESCAPE_SKILL:
+            print("使用 ESCAPE_SKILL")
+            self.escape()
+        else:
+            return
 
         self.clickButton(PokeConfig.A_BUTTON, 0.5)
         time.sleep(0.5)
@@ -233,6 +257,14 @@ class PokeAction(Action):
         time.sleep(0.5)
         self.clickButton(PokeConfig.A_BUTTON, 0.5)
         time.sleep(8)
+
+    def escape(self):
+        self.clickButton(PokeConfig.RIGHT_BUTTON, 0.5)
+        self.clickButton(PokeConfig.DOWN_BUTTON, 0.5)
+        self.clickButton(PokeConfig.A_BUTTON, 0.5)
+        time.sleep(0.5)
+        self.clickButton(PokeConfig.A_BUTTON, 0.5)
+        time.sleep(4)
 
 
 

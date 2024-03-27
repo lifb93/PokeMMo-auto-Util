@@ -78,7 +78,7 @@ class ImageScreen(object):
         # pytesseract.pytesseract.tesseract_cmd = pytesseract_cmd
         # img = Image.open(url)
         # text = pytesseract.image_to_string(img, lang='chi_sim')
-        print(target)
+        # print(target)
 
         sp = self.recognition_text(text)
         has_target = False
@@ -148,14 +148,6 @@ class ImageScreen(object):
         text = self.read_text(IMAGE_URL)
         print(text)
         return self.recognition_img(text, ['掌握','四个','技能']).isTarget
-
-
-    def check_fire(self):
-        time.sleep(1)
-        self.getScreenShot(self.battle_win[0],self.battle_win[1], self.battle_win[2], self.battle_win[3], IMAGE_URL)
-        text = self.read_text(IMAGE_URL)
-        print(text)
-        return self.recognition_poke(text, '野生')
 
     def check_default_list_with_text(self, text):
         time.sleep(1)

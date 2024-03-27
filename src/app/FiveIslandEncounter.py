@@ -13,22 +13,29 @@ class FiveIslandEncounter(PokeAction):
         self.fiveIslandEncounterDes()
 
     def action_inf(self, res):
-        if PokeConfig.PAY_DAY_PP_COUNT_CUR > 0 and PokeConfig.GROUP_SKILL_PP_COUNT_CUR > 0:
+        if PokeConfig.PAY_DAY_PP_COUNT_CUR > 0 or PokeConfig.GROUP_SKILL_PP_COUNT_CUR > 0:
             sp = self.poke_random_scent_fire(self.horValue)
 
+            print("sp is %s " % sp.to_str())
             if sp is None:
                 return 1
 
             # 是否是群怪
             if sp.size > 1:
                 print("遇到群怪")
-                PokeConfig.GROUP_SKILL_PP_COUNT_CUR -= 1
-                return self.poke_fire_with_sp(sp, 1)
+                if PokeConfig.GROUP_SKILL_PP_COUNT_CUR > 0:
+                    PokeConfig.GROUP_SKILL_PP_COUNT_CUR -= 1
+                    return self.poke_fire_with_sp(sp, PokeConfig.SECOND_SKILL)
+                else:
+                    return self.poke_fire_with_sp(sp, PokeConfig.ESCAPE_SKILL)
             else:
-                print("遇到怪")
-                PokeConfig.PAY_DAY_PP_COUNT_CUR -= 1
-                return self.poke_fire_with_sp(sp, 0)
-        else:
+                print("遇到单怪")
+                if PokeConfig.PAY_DAY_PP_COUNT_CUR > 0:
+                    PokeConfig.PAY_DAY_PP_COUNT_CUR -= 1
+                    return self.poke_fire_with_sp(sp, PokeConfig.FIRST_SKILL)
+                else:
+                    return self.poke_fire_with_sp(sp, PokeConfig.ESCAPE_SKILL)
+        elif PokeConfig.PAY_DAY_PP_COUNT_CUR == 0 and PokeConfig.GROUP_SKILL_PP_COUNT_CUR == 0:
             self.poke_pm(2.3)
 
             # 刷新pp
@@ -47,7 +54,7 @@ class FiveIslandEncounter(PokeAction):
             self.clickButton(PokeConfig.RIGHT_BUTTON, 1)
             self.clickButton(PokeConfig.UP_BUTTON, 1)
 
-        return 1
+        return PokeConfig.DEFAULT_AUTO
 
 
     def fiveIslandEncounterDes(self):
@@ -73,5 +80,27 @@ class FiveIslandEncounter(PokeAction):
         print("5秒后开始，请切换到游戏界面")
 
 
-c = FiveIslandEncounter()
-c.action_inf(2)
+# c = FiveIslandEncounter()
+# c.action_loop(1)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
