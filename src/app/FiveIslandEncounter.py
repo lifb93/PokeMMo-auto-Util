@@ -14,27 +14,7 @@ class FiveIslandEncounter(PokeAction):
 
     def action_inf(self, res):
         if PokeConfig.PAY_DAY_PP_COUNT_CUR > 0 or PokeConfig.GROUP_SKILL_PP_COUNT_CUR > 0:
-            sp = self.poke_random_scent_fire(self.horValue)
-
-            print("sp is %s " % sp.to_str())
-            if sp is None:
-                return 1
-
-            # 是否是群怪
-            if sp.size > 1:
-                print("遇到群怪")
-                if PokeConfig.GROUP_SKILL_PP_COUNT_CUR > 0:
-                    PokeConfig.GROUP_SKILL_PP_COUNT_CUR -= 1
-                    return self.poke_fire_with_sp(sp, PokeConfig.SECOND_SKILL)
-                else:
-                    return self.poke_fire_with_sp(sp, PokeConfig.ESCAPE_SKILL)
-            else:
-                print("遇到单怪")
-                if PokeConfig.PAY_DAY_PP_COUNT_CUR > 0:
-                    PokeConfig.PAY_DAY_PP_COUNT_CUR -= 1
-                    return self.poke_fire_with_sp(sp, PokeConfig.FIRST_SKILL)
-                else:
-                    return self.poke_fire_with_sp(sp, PokeConfig.ESCAPE_SKILL)
+            return self.poke_random_scent_fire(self.horValue)
         elif PokeConfig.PAY_DAY_PP_COUNT_CUR == 0 and PokeConfig.GROUP_SKILL_PP_COUNT_CUR == 0:
             self.poke_pm(2.3)
 
