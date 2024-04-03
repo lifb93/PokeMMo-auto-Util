@@ -15,6 +15,10 @@ SWEET_SCENT = '7'
 SWEET_SCENT_PP = 32
 MOVEMENT = '9'
 
+
+# 是否进行战斗,如果false 则会逃跑
+POKE_FIRE = True
+
 # 是否杀死指定宝可梦
 KILL_TARGET_POKE = False
 # 杀死指定宝可梦

@@ -23,7 +23,11 @@ class PokeGreeDragon(PokeAction):
         print("依赖功能：飞空，香甜气息，瞬间移动")
         print("pm: 战斗公园的pm")
         print("站位: 战斗公园的pm外面")
+        toFire = input("是否进行战斗？（默认是战斗）[Y/N]:")
+        if toFire != 'Y' and toFire != 'y':
+            PokeConfig.POKE_FIRE = False
         print("5秒后开始，请切换到游戏界面")
+
 
     # 飞翔到龙洞逻辑
     def poke_cave(self):

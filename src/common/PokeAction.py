@@ -116,8 +116,12 @@ class PokeAction(Action):
             print('遇到闪光精灵了！！！')
             return PokeConfig.THREAD_STOP
         else:
-            time.sleep(2)
-            self.fire(PokeConfig.FIRST_SKILL)
+            if PokeConfig.POKE_FIRE:
+                time.sleep(2)
+                self.fire(PokeConfig.FIRST_SKILL)
+            else:
+                time.sleep(2)
+                self.fire(PokeConfig.ESCAPE_SKILL)
             return PokeConfig.DEFAULT_AUTO
 
     def poke_fire_with_sp(self, sp, skillIndex):
