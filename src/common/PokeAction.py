@@ -106,7 +106,7 @@ class PokeAction(Action):
     # 进入战斗
     def poke_fire(self):
         print('进入战斗')
-        time.sleep(7)
+        time.sleep(8)
         # 截图识别是否出现闪光
 
         sp = self.imageScreen.check_default_list()
