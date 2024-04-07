@@ -86,7 +86,7 @@ class PokeAction(Action):
 
 
     def poke_sweet_scent_fire(self,current):
-        currentCount = current
+        currentCount = current - 1
 
         while currentCount < 6:
             time.sleep(2)
@@ -106,7 +106,7 @@ class PokeAction(Action):
     # 进入战斗
     def poke_fire(self):
         print('进入战斗')
-        time.sleep(8)
+        time.sleep(9)
         # 截图识别是否出现闪光
 
         sp = self.imageScreen.check_default_list()
@@ -158,6 +158,7 @@ class PokeAction(Action):
         elif skill == PokeConfig.ESCAPE_SKILL:
             print("使用 ESCAPE_SKILL")
             self.escape()
+            return
         else:
             return
 

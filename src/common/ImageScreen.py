@@ -17,7 +17,7 @@ class ImageScreen(object):
     pass
 
     def __init__(self):
-        self.filter_shiny= ['闪光', 'shiny']
+        self.filter_shiny= ['闪光', 'shiny', '闪']
         self.filter_list= ['Suicune', 'Entei', 'Raikou', 'Zapdos', 'Articuno', 'Moltres']
         self.filter_list_zh= [ '水君', '炎帝', '雷公', '闪电鸟', '急冻鸟', '火焰鸟']
         self.battle_win = [0, 750, 500, 300]

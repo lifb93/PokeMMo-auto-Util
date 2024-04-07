@@ -2,6 +2,8 @@ import threading
 
 from src.app.EmeraldBattleParkUpLevel import EmeraldBattleParkUpLevel
 from src.app.FiveIslandEncounter import FiveIslandEncounter
+from src.app.JohtoBlackthornCityEncounter import JohtoBlackthornCityEncounter
+from src.common import PokeConfig
 from src.common.PokeAction import PokeAction
 from src.app.PokeGreeDragon import PokeGreeDragon
 
@@ -14,9 +16,10 @@ def __poke_main__():
     # pr = PreparePokeConfig()
     # pr.prepare_poke()
     poke = PokeGreeDragon()
-    # five = FiveIslandEncounter()
+    five = FiveIslandEncounter()
     poke2 = EmeraldBattleParkUpLevel()
-    t1 = threading.Thread(target=poke.action_loop(0))
+    joh = JohtoBlackthornCityEncounter()
+    t1 = threading.Thread(target=five.action_loop(PokeConfig.DEFAULT_AUTO))
     t1.start()
 
 __poke_main__()
