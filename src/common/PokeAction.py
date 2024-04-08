@@ -4,6 +4,7 @@ import time
 from src.common import PokeConfig
 from src.common.Action import Action
 from src.common.ImageScreen import ImageScreen
+from src.constants import Direction
 
 
 class PokeAction(Action):
@@ -39,7 +40,7 @@ class PokeAction(Action):
         while not isFire:
             count = 0
             while count < 3:
-                if direction in 'Horizontal':
+                if direction in Direction.Horizontal:
                     self.clickButton(PokeConfig.RIGHT_BUTTON, 0.5)
                     self.clickButton(PokeConfig.LEFT_BUTTON, 0.5)
                     self.clickButton(PokeConfig.RIGHT_BUTTON, 0.5)

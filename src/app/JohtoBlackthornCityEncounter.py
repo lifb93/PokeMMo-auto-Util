@@ -2,6 +2,7 @@ from src.common import PokeConfig
 import time
 
 from src.common.PokeAction import PokeAction
+from src.constants import Direction
 
 
 class JohtoBlackthornCityEncounter(PokeAction):
@@ -40,9 +41,9 @@ class JohtoBlackthornCityEncounter(PokeAction):
         print("pm: 烟墨市pm")
         print("站位: 烟墨市pm外面")
         isHorizontal = input("是否水平遇怪？[Y/N]:")
-        self.horValue = 'Horizontal'
+        self.horValue = Direction.Horizontal
         if isHorizontal != 'Y' and isHorizontal != 'y':
-            self.horValue = 'Vertical'
+            self.horValue = Direction.Vertical
 
         toFire = input("是否进行战斗？（默认是战斗）[Y/N]:")
         if toFire != 'Y' and toFire != 'y':

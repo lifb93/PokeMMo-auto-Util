@@ -2,6 +2,7 @@ from src.common import PokeConfig
 import time
 
 from src.common.PokeAction import PokeAction
+from src.constants import Direction
 
 
 class FiveIslandEncounter(PokeAction):
@@ -44,9 +45,9 @@ class FiveIslandEncounter(PokeAction):
         print("pm: 五岛pm")
         print("站位: 五岛pm外面")
         isHorizontal = input("是否水平遇怪？[Y/N]:")
-        self.horValue = 'Horizontal'
+        self.horValue = Direction.Horizontal
         if isHorizontal != 'Y' and isHorizontal != 'y':
-            self.horValue = 'Vertical'
+            self.horValue = Direction.Vertical
 
         payDayCount = input("聚宝功 技能的pp数量:")
         PokeConfig.PAY_DAY_PP_COUNT = int(payDayCount)
