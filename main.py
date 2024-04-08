@@ -1,9 +1,11 @@
 import os
 import threading
 
+from src.app.DriftveilCityFrillishEncounter import DriftveilCityFrillishEncounter
 from src.app.EmeraldBattleParkUpLevel import EmeraldBattleParkUpLevel
 from src.app.FiveIslandEncounter import FiveIslandEncounter
 from src.app.JohtoBlackthornCityEncounter import JohtoBlackthornCityEncounter
+from src.app.PokeEncounter import PokeEncounter
 from src.common import PokeConfig
 from src.common.ImageScreen import ImageScreen
 from src.common.PokeAction import PokeAction
@@ -21,10 +23,12 @@ def __poke_main__():
 
     # pr = PreparePokeConfig()
     # pr.prepare_poke()
-    poke = PokeGreeDragon()
+    frillish = DriftveilCityFrillishEncounter()
+    emerald = EmeraldBattleParkUpLevel()
     five = FiveIslandEncounter()
-    poke2 = EmeraldBattleParkUpLevel()
     joh = JohtoBlackthornCityEncounter()
+    poke = PokeEncounter()
+    gree = PokeGreeDragon()
     t1 = threading.Thread(target=joh.action_loop(PokeConfig.DEFAULT_AUTO))
     t1.start()
 
