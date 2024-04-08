@@ -5,11 +5,10 @@ from PIL import Image
 import random
 import easyocr
 
+from src.common import PokeConfig
 from src.common.ScreenPoke import ScreenPoke
 
 # import pytesseract
-
-IMAGE_URL = r"C:/Users/11947/Desktop/3.png"
 
 # -i https://mirrors.aliyun.com/pypi/simple some-package
 
@@ -114,16 +113,16 @@ class ImageScreen(object):
     def check_shiny(self):
         time.sleep(1)
         print("filter list :  %s " % (self.filter_shiny))
-        self.getScreenShot(self.poke_win[0],self.poke_win[1], self.poke_win[2], self.poke_win[3], IMAGE_URL)
-        text = self.read_text(IMAGE_URL)
+        self.getScreenShot(self.poke_win[0],self.poke_win[1], self.poke_win[2], self.poke_win[3], PokeConfig.IMAGE_URL)
+        text = self.read_text(PokeConfig.IMAGE_URL)
         print(text)
         return self.recognition_img(text, self.filter_shiny).isTarget
 
     def check_default_list(self):
         time.sleep(1)
         target = self.filter_shiny + self.filter_list_zh + self.filter_list
-        self.getScreenShot(self.poke_win[0],self.poke_win[1], self.poke_win[2], self.poke_win[3], IMAGE_URL)
-        text = self.read_text(IMAGE_URL)
+        self.getScreenShot(self.poke_win[0],self.poke_win[1], self.poke_win[2], self.poke_win[3], PokeConfig.IMAGE_URL)
+        text = self.read_text(PokeConfig.IMAGE_URL)
         print(text)
         return self.recognition_img(text, target)
 
@@ -138,15 +137,15 @@ class ImageScreen(object):
         time.sleep(1)
         target = self.filter_shiny + self.filter_list_zh + self.filter_list
         target.append(tarItem)
-        self.getScreenShot(self.poke_win[0],self.poke_win[1], self.poke_win[2], self.poke_win[3], IMAGE_URL)
-        text = self.read_text(IMAGE_URL)
+        self.getScreenShot(self.poke_win[0],self.poke_win[1], self.poke_win[2], self.poke_win[3], PokeConfig.IMAGE_URL)
+        text = self.read_text(PokeConfig.IMAGE_URL)
         print(text)
         return self.recognition_img(text, target)
 
     def check_forget_skill(self):
         time.sleep(1)
-        self.getScreenShot(self.battle_win[0],self.battle_win[1], self.battle_win[2], self.battle_win[3], IMAGE_URL)
-        text = self.read_text(IMAGE_URL)
+        self.getScreenShot(self.battle_win[0],self.battle_win[1], self.battle_win[2], self.battle_win[3], PokeConfig.IMAGE_URL)
+        text = self.read_text(PokeConfig.IMAGE_URL)
         print(text)
         return self.recognition_img(text, ['掌握','四个','技能']).isTarget
 

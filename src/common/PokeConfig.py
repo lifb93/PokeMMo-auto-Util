@@ -1,5 +1,6 @@
 
 
+IMAGE_URL = r"D:/poke_action.png"
 
 THREAD_STOP = 99
 DEFAULT_AUTO = 1

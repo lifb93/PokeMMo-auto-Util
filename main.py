@@ -1,9 +1,11 @@
+import os
 import threading
 
 from src.app.EmeraldBattleParkUpLevel import EmeraldBattleParkUpLevel
 from src.app.FiveIslandEncounter import FiveIslandEncounter
 from src.app.JohtoBlackthornCityEncounter import JohtoBlackthornCityEncounter
 from src.common import PokeConfig
+from src.common.ImageScreen import ImageScreen
 from src.common.PokeAction import PokeAction
 from src.app.PokeGreeDragon import PokeGreeDragon
 
@@ -13,13 +15,17 @@ from src.app.PokeGreeDragon import PokeGreeDragon
 # pyinstaller.exe -F .\main.py  打包
 
 def __poke_main__():
+    path = os.path.join(os.path.expanduser("~"), "Desktop")
+    PokeConfig.IMAGE_URL = path + r"/poke_action.png"
+    print("init image url : %s " % PokeConfig.IMAGE_URL)
+
     # pr = PreparePokeConfig()
     # pr.prepare_poke()
     poke = PokeGreeDragon()
     five = FiveIslandEncounter()
     poke2 = EmeraldBattleParkUpLevel()
     joh = JohtoBlackthornCityEncounter()
-    t1 = threading.Thread(target=five.action_loop(PokeConfig.DEFAULT_AUTO))
+    t1 = threading.Thread(target=joh.action_loop(PokeConfig.DEFAULT_AUTO))
     t1.start()
 
 __poke_main__()
