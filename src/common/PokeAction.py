@@ -50,7 +50,10 @@ class PokeAction(Action):
                     self.clickButton(PokeConfig.DOWN_BUTTON, 0.5)
                     self.clickButton(PokeConfig.UP_BUTTON, 0.5)
                 count += 1
-                time.sleep(1)
+                time.sleep(0.3)
+
+
+            time.sleep(4)
 
             sp = self.imageScreen.check_default_list()
             poke = sp.poke
@@ -59,25 +62,24 @@ class PokeAction(Action):
                 isFire = True
 
                 # 复位按键到技能一
-                time.sleep(5)
+                #time.sleep(5)
                 self.clickButton(PokeConfig.UP_BUTTON, 0.5)
                 self.clickButton(PokeConfig.LEFT_BUTTON, 0.5)
 
-        print("sp is %s " % sp.to_str())
         if sp is None:
             return PokeConfig.DEFAULT_AUTO
 
         # 是否是群怪
         if sp.size > 1:
             print("遇到群怪")
-            if PokeConfig.GROUP_SKILL_PP_COUNT_CUR > 0:
+            if PokeConfig.GROUP_SKILL_PP_COUNT_CUR > 0 and PokeConfig.POKE_FIRE:
                 PokeConfig.GROUP_SKILL_PP_COUNT_CUR -= 1
                 return self.poke_fire_with_sp(sp, PokeConfig.SECOND_SKILL)
             else:
                 return self.poke_fire_with_sp(sp, PokeConfig.ESCAPE_SKILL)
         else:
             print("遇到单怪")
-            if PokeConfig.PAY_DAY_PP_COUNT_CUR > 0:
+            if PokeConfig.PAY_DAY_PP_COUNT_CUR > 0 and PokeConfig.POKE_FIRE:
                 PokeConfig.PAY_DAY_PP_COUNT_CUR -= 1
                 return self.poke_fire_with_sp(sp, PokeConfig.FIRST_SKILL)
             else:
@@ -126,7 +128,6 @@ class PokeAction(Action):
 
     def poke_fire_with_sp(self, sp, skillIndex):
         print('进入战斗')
-        time.sleep(7)
 
         text = sp.text
         sp2 = self.imageScreen.check_default_list_with_text(text)
@@ -136,8 +137,8 @@ class PokeAction(Action):
             print('遇到闪光精灵了！！！')
             return PokeConfig.THREAD_STOP
         else:
-            time.sleep(2)
             self.fire(skillIndex)
+            time.sleep(1)
             return PokeConfig.DEFAULT_AUTO
 
 
@@ -219,6 +220,10 @@ class PokeAction(Action):
         time.sleep(1)
         self.clickButton(PokeConfig.A_BUTTON, 0.5)
         time.sleep(8)
+        self.clickButton(PokeConfig.B_BUTTON, 0.5)
+        time.sleep(2)
+        self.clickButton(PokeConfig.B_BUTTON, 0.5)
+        time.sleep(2)
         self.clickButton(PokeConfig.B_BUTTON, 0.5)
         time.sleep(2)
         self.clickButton(PokeConfig.B_BUTTON, 0.5)

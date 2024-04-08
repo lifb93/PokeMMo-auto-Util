@@ -59,6 +59,7 @@ class ImageScreen(object):
                 if 'L' in item:
                     index = item.index('L')
                     poke = item[0:index]
+                    poke = poke.strip()
                     size += 1
             else:
                 if poke in item:
@@ -157,7 +158,8 @@ class ImageScreen(object):
 
 # c = ImageScreen()
 # c.addFiltItem('TestStr')
-# print(c.check_default_list())
+# sp = c.check_default_list()
+# print(sp.to_str())
 # print(c.check_fire())
 # print(c.check_shiny())
 # print(c.check_shiny())

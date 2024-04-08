@@ -26,11 +26,9 @@ class JohtoBlackthornCityEncounter(PokeAction):
             # 去草坪
             self.clickButton(PokeConfig.BICYCLE, 0.2)
 
-            self.clickButton(PokeConfig.LEFT_BUTTON, 2)
-            self.clickButton(PokeConfig.DOWN_BUTTON, 1)
+            self.clickButton(PokeConfig.LEFT_BUTTON, 1.13)
+            self.clickButton(PokeConfig.DOWN_BUTTON, 3.5)
 
-            self.clickButton(PokeConfig.RIGHT_BUTTON, 1)
-            self.clickButton(PokeConfig.DOWN_BUTTON, 0.5)
 
         return PokeConfig.DEFAULT_AUTO
 
@@ -46,21 +44,25 @@ class JohtoBlackthornCityEncounter(PokeAction):
         if isHorizontal != 'Y' and isHorizontal != 'y':
             self.horValue = 'Vertical'
 
-        payDayCount = input("聚宝功 技能的pp数量:")
-        PokeConfig.PAY_DAY_PP_COUNT = int(payDayCount)
-        PokeConfig.PAY_DAY_PP_COUNT_CUR = 0
-        print(PokeConfig.PAY_DAY_PP_COUNT)
+        toFire = input("是否进行战斗？（默认是战斗）[Y/N]:")
+        if toFire != 'Y' and toFire != 'y':
+            PokeConfig.POKE_FIRE = False
+        else:
+            payDayCount = input("聚宝功 技能的pp数量:")
+            PokeConfig.PAY_DAY_PP_COUNT = int(payDayCount)
+            PokeConfig.PAY_DAY_PP_COUNT_CUR = 0
+            print(PokeConfig.PAY_DAY_PP_COUNT)
 
-        groupSkillCount = input("群体攻击 技能的pp数量:")
-        PokeConfig.GROUP_SKILL_PP_COUNT = int(groupSkillCount)
-        PokeConfig.GROUP_SKILL_PP_COUNT_CUR = 0
-        print(PokeConfig.GROUP_SKILL_PP_COUNT)
+            groupSkillCount = input("群体攻击 技能的pp数量:")
+            PokeConfig.GROUP_SKILL_PP_COUNT = int(groupSkillCount)
+            PokeConfig.GROUP_SKILL_PP_COUNT_CUR = 0
+            print(PokeConfig.GROUP_SKILL_PP_COUNT)
         print("5秒后开始，请切换到游戏界面")
 
 
 
-# c = JohtoBlackthornCityEncounter()
-# c.action_loop(1)
+#c = JohtoBlackthornCityEncounter()
+#c.action_inf(1)
 
 
 
