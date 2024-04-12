@@ -16,9 +16,10 @@ class ImageScreen(object):
     pass
 
     def __init__(self):
-        self.filter_shiny= ['闪光', 'shiny', '闪']
-        self.filter_list= ['Suicune', 'Entei', 'Raikou', 'Zapdos', 'Articuno', 'Moltres']
-        self.filter_list_zh= [ '水君', '炎帝', '雷公', '闪电鸟', '急冻鸟', '火焰鸟']
+        self.filter_shiny = ['闪光', 'shiny', '闪']
+        self.filter_list = ['Suicune', 'Entei', 'Raikou', 'Zapdos', 'Articuno', 'Moltres']
+        self.filter_list_zh = ['水君', '炎帝', '雷公', '闪电鸟', '急冻鸟', '火焰鸟']
+        self.filter_list_ext = ['君', '帝', '公', '闪电', '急冻', '火焰']
         self.battle_win = [0, 750, 500, 300]
         self.poke_win = [200, 50, 1300, 300]
 
@@ -62,6 +63,11 @@ class ImageScreen(object):
                     size += 1
             else:
                 if poke in item:
+                    size += 1
+                elif 'L' in item:
+                    index = item.index('L')
+                    poke = item[0:index]
+                    poke = poke.strip()
                     size += 1
 
         screenPoke.__set_poke__(poke)
@@ -155,7 +161,10 @@ class ImageScreen(object):
         return self.recognition_img(text, target)
 
 
+# l = ['比比乌 LV。 48', '比比鸟 LV。 47 $', '比比乌 LV。 48古', '比比鸟 LV。 48古', '比比鸟 LV。 46古']
 # c = ImageScreen()
+# poke = c.recognition_text(l)
+# print(poke.to_str())
 # c.addFiltItem('TestStr')
 # sp = c.check_default_list()
 # print(sp.to_str())

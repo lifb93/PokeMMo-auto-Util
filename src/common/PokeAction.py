@@ -71,20 +71,21 @@ class PokeAction(Action):
             return PokeConfig.DEFAULT_AUTO
 
         # 是否是群怪
-        if sp.size > 1:
-            print("遇到群怪")
-            if PokeConfig.GROUP_SKILL_PP_COUNT_CUR > 0 and PokeConfig.POKE_FIRE:
-                PokeConfig.GROUP_SKILL_PP_COUNT_CUR -= 1
-                return self.poke_fire_with_sp(sp, PokeConfig.SECOND_SKILL)
-            else:
-                return self.poke_fire_with_sp(sp, PokeConfig.ESCAPE_SKILL)
-        else:
+        if sp.size == 1:
             print("遇到单怪")
             if PokeConfig.PAY_DAY_PP_COUNT_CUR > 0 and PokeConfig.POKE_FIRE:
                 PokeConfig.PAY_DAY_PP_COUNT_CUR -= 1
                 return self.poke_fire_with_sp(sp, PokeConfig.FIRST_SKILL)
-            else:
-                return self.poke_fire_with_sp(sp, PokeConfig.ESCAPE_SKILL)
+            #else:
+                #return self.poke_fire_with_sp(sp, PokeConfig.ESCAPE_SKILL)
+        else:
+            print("遇到群怪")
+
+        if PokeConfig.GROUP_SKILL_PP_COUNT_CUR > 0 and PokeConfig.POKE_FIRE:
+            PokeConfig.GROUP_SKILL_PP_COUNT_CUR -= 1
+            return self.poke_fire_with_sp(sp, PokeConfig.SECOND_SKILL)
+        else:
+            return self.poke_fire_with_sp(sp, PokeConfig.ESCAPE_SKILL)
 
 
 
