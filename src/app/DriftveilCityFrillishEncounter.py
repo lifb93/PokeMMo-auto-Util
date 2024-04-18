@@ -24,5 +24,9 @@ class DriftveilCityFrillishEncounter(PokeAction):
         return self.poke_sweet_scent_fire(res)
 
     def to_lake(self):
+        self.clickButton(PokeConfig.RIGHT_BUTTON,1.5)
+        self.clickButton(PokeConfig.UP_BUTTON,1)
         self.clickButton(PokeConfig.RIGHT_BUTTON,3)
+
         self.surfing()
+        time.sleep(3)
