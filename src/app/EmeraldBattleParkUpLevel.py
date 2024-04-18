@@ -15,7 +15,7 @@ class EmeraldBattleParkUpLevel(PokeAction):
     def action_inf(self, res):
         time.sleep(5)
         self.poke_pm(3)
-        self.clickButton(PokeConfig.BICYCLE, 0.2)
+        self.clickButton(PokeConfig.BTN_BICYCLE, 0.2)
 
         self.clickButton(PokeConfig.DOWN_BUTTON, 1)
         self.clickButton(PokeConfig.RIGHT_BUTTON, 2)

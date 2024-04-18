@@ -89,12 +89,18 @@ class PokeAction(Action):
 
 
 
+    def poke_pp_sweet_scent_fire(self, direction):
+        pass
+
+
+
+
     def poke_sweet_scent_fire(self,current):
         currentCount = current - 1
 
         while currentCount < 6:
             time.sleep(2)
-            self.clickButton(PokeConfig.SWEET_SCENT, 0.2)
+            self.clickButton(PokeConfig.BTN_SWEET_SCENT, 0.2)
 
             res = self.poke_fire()
             print('已经使用了 %d 次，识别结果： %d' % (currentCount, res))
@@ -208,7 +214,7 @@ class PokeAction(Action):
     def poke_pm(self, second):
         print('准备恢复')
         time.sleep(2)
-        self.clickButton(PokeConfig.MOVEMENT,1)
+        self.clickButton(PokeConfig.BTN_MOVEMENT, 1)
 
         # 回血
         time.sleep(3)

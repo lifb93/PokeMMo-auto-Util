@@ -25,7 +25,7 @@ class FiveIslandEncounter(PokeAction):
             print("刷新pp， 聚宝功：%s  群体技能： %s" % (PokeConfig.PAY_DAY_PP_COUNT_CUR, PokeConfig.GROUP_SKILL_PP_COUNT_CUR))
 
             # 去草坪
-            self.clickButton(PokeConfig.BICYCLE, 0.2)
+            self.clickButton(PokeConfig.BTN_BICYCLE, 0.2)
 
             self.clickButton(PokeConfig.LEFT_BUTTON, 2)
             self.clickButton(PokeConfig.DOWN_BUTTON, 0.3)

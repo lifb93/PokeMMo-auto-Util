@@ -10,12 +10,21 @@ UP_BUTTON = 'w'
 DOWN_BUTTON = 's'
 LEFT_BUTTON = 'a'
 RIGHT_BUTTON = 'd'
-BICYCLE = '1'
 
-SWEET_SCENT = '7'
+# 自行车
+BTN_BICYCLE = '1'
+# 地图
+BTN_MAP = '2'
+# pp种子按键
+BTN_SEED_PP = '6'
+# 香甜气息技能按键
+BTN_SWEET_SCENT = '7'
+# 瞬间移动技能按键
+BTN_MOVEMENT = '9'
 SWEET_SCENT_PP = 32
-MOVEMENT = '9'
 
+# pp种子的数量
+NUM_SEED_PP = 0
 
 # 是否进行战斗,如果false 则会逃跑
 POKE_FIRE = True

@@ -33,7 +33,7 @@ class PokeGreeDragon(PokeAction):
     def poke_cave(self):
         print('进入洞穴')
 
-        self.clickButton('2', 0.5)
+        self.clickButton(PokeConfig.BTN_MAP, 0.5)
         time.sleep(1)
         self.clickButton(PokeConfig.DOWN_BUTTON, 0.1)
         self.clickButton(PokeConfig.LEFT_BUTTON, 0.1)
