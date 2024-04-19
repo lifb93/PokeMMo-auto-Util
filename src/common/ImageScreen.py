@@ -79,6 +79,7 @@ class ImageScreen(object):
                     poke = poke.strip()
                     size += 1
 
+        size = len(text)
         screenPoke.__set_poke__(poke)
         screenPoke.__set_size__(size)
         return screenPoke
