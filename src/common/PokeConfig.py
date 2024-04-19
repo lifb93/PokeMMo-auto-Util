@@ -21,7 +21,9 @@ BTN_SEED_PP = '6'
 BTN_SWEET_SCENT = '7'
 # 瞬间移动技能按键
 BTN_MOVEMENT = '9'
-SWEET_SCENT_PP = 32
+
+# 可以香甜气息的次数
+TIMES_SWEET_SCENT = 6
 
 # pp种子的数量
 NUM_SEED_PP = 0

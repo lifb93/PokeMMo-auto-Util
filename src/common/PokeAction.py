@@ -54,7 +54,7 @@ class PokeAction(Action):
                 time.sleep(0.3)
 
 
-            time.sleep(4)
+            time.sleep(5)
 
             sp = self.imageScreen.check_default_list()
             poke = sp.poke
@@ -89,16 +89,25 @@ class PokeAction(Action):
 
 
 
-    def poke_pp_sweet_scent_fire(self, direction):
-        pass
+    def poke_pp_sweet_scent_fire(self, seed_num):
+        PokeConfig.NUM_SEED_PP = seed_num
+        print("设置pp种子数量 %s " % PokeConfig.NUM_SEED_PP)
+
+        time.sleep(2)
+        self.clickButton(PokeConfig.BTN_SWEET_SCENT, 0.2)
+        sp = self.imageScreen.check_sweet_scent_talk()
 
 
+
+
+
+        return PokeConfig.DEFAULT_AUTO
 
 
     def poke_sweet_scent_fire(self,current):
         currentCount = current - 1
 
-        while currentCount < 6:
+        while currentCount < PokeConfig.TIMES_SWEET_SCENT:
             time.sleep(2)
             self.clickButton(PokeConfig.BTN_SWEET_SCENT, 0.2)
 

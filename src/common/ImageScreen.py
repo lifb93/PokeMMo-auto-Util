@@ -26,12 +26,19 @@ class ImageScreen(object):
 
     def scan_win(self):
         try:
-            while True:
+            point_list = []
+            count = 0
+            while count < 2:
+                time.sleep(5)
                 scw, seh = pyautogui.size()
                 x, y = pyautogui.position()
 
                 print(" %s %s , x: %s y: %s " % (scw, seh, x, y))
-                time.sleep(1)
+                point_list.append(int(x))
+                point_list.append(int(y))
+                count += 1
+
+            print('point_list : %d , %d , %d , %d' % (point_list[0], point_list[1], point_list[2], point_list[3]))
         except KeyboardInterrupt:
             print('end')
 
@@ -46,7 +53,7 @@ class ImageScreen(object):
         self.filter_list_zh.append(item)
 
     def read_text(self, url):
-        reader = easyocr.Reader(['ch_sim', 'en'], gpu=False)
+        reader = easyocr.Reader(['ch_sim', 'en'], gpu=True)
         text = reader.readtext(url, detail=0)
         return text
 
@@ -160,9 +167,12 @@ class ImageScreen(object):
         target = self.filter_shiny + self.filter_list_zh + self.filter_list
         return self.recognition_img(text, target)
 
+    def check_sweet_scent_talk(self):
+        pass
 
 # l = ['比比乌 LV。 48', '比比鸟 LV。 47 $', '比比乌 LV。 48古', '比比鸟 LV。 48古', '比比鸟 LV。 46古']
 # c = ImageScreen()
+# c.scan_win()
 # poke = c.recognition_text(l)
 # print(poke.to_str())
 # c.addFiltItem('TestStr')
