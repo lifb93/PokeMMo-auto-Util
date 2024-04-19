@@ -46,6 +46,8 @@ class ImageScreen(object):
     def getScreenShot(self, topX, topY, width, high, url):
         # img = pyautogui.screenshot()    #返回值为一个Img对象
         img = pyautogui.screenshot(url,region=(topX,topY,width,high))
+        if PokeConfig.GREY_IMG:
+            img = img.convert("L")
         img.save(url)
         return url
 
@@ -170,8 +172,39 @@ class ImageScreen(object):
     def check_sweet_scent_talk(self):
         pass
 
+
+    def grey_test(self):
+        origin = r'C:\Users\11947\Desktop\poke_action 2.png'
+        img = Image.open(origin)
+        imgGrey = img.convert('L')
+        origin_grep = r'C:\Users\11947\Desktop\poke_action2_grep.png'
+        imgGrey.save(origin_grep)
+
+        # print(img.width)
+        # print(img.height)
+        # box = (0, 0, img.width/2 , img.height)
+
+        cat_path = r'C:\Users\11947\Desktop\poke_action_cat.png'
+        # img = img.crop(box)
+        # img = img.resize((img.width * 2, img.height * 2), Image.BICUBIC)
+        # img.save(cat_path)
+
+        # grep = img.convert('L')
+        path = r'C:\Users\11947\Desktop\poke_action_grey.png'
+        # grep.save(path)
+
+        text = self.read_text(origin_grep)
+        print(text)
+        text = self.read_text(path)
+        print(text)
+        text = self.read_text(cat_path)
+        print(text)
+
+
 # l = ['比比乌 LV。 48', '比比鸟 LV。 47 $', '比比乌 LV。 48古', '比比鸟 LV。 48古', '比比鸟 LV。 46古']
 # c = ImageScreen()
+# c.check_default_list()
+# c.grey_test()
 # c.scan_win()
 # poke = c.recognition_text(l)
 # print(poke.to_str())
