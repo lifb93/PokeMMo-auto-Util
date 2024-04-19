@@ -6,6 +6,7 @@ from src.app.EmeraldBattleParkUpLevel import EmeraldBattleParkUpLevel
 from src.app.FiveIslandEncounter import FiveIslandEncounter
 from src.app.JohtoBlackthornCityEncounter import JohtoBlackthornCityEncounter
 from src.app.PokeEncounter import PokeEncounter
+from src.app.PokePPSweetScentEncounter import PokePPSweetScentEncounter
 from src.common import PokeConfig
 from src.common.ImageScreen import ImageScreen
 from src.common.PokeAction import PokeAction

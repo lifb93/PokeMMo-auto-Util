@@ -89,19 +89,28 @@ class PokeAction(Action):
 
 
 
-    def poke_pp_sweet_scent_fire(self, seed_num):
-        PokeConfig.NUM_SEED_PP = seed_num
-        print("设置pp种子数量 %s " % PokeConfig.NUM_SEED_PP)
+    def poke_pp_sweet_scent_fire(self, eat_num):
+        currentSentNum = PokeConfig.NUM_SEED_PP
+        res = PokeConfig.DEFAULT_AUTO
+        while currentSentNum > 0:
+            res = self.poke_sweet_scent_fire(PokeConfig.DEFAULT_AUTO)
+            if res == PokeConfig.THREAD_STOP:
+                break
 
-        time.sleep(2)
-        self.clickButton(PokeConfig.BTN_SWEET_SCENT, 0.2)
-        sp = self.imageScreen.check_sweet_scent_talk()
+            if currentSentNum < eat_num:
+                return PokeConfig.THREAD_STOP
 
+            self.clickButton(PokeConfig.BTN_SWEET_SCENT, 0.2)
+            # sp = self.imageScreen.check_sweet_scent_talk()
+            self.clickButton(PokeConfig.A_BUTTON, 0.2)
+            self.clickButton(PokeConfig.A_BUTTON, 0.2)
 
+            time.sleep(1)
 
+            currentSentNum -= eat_num
+            print("吃果子， pp 果子还剩下 %d " % currentSentNum)
 
-
-        return PokeConfig.DEFAULT_AUTO
+        return res
 
 
     def poke_sweet_scent_fire(self,current):
