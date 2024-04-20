@@ -20,6 +20,7 @@ class ImageScreen(object):
         self.filter_list = ['Suicune', 'Entei', 'Raikou', 'Zapdos', 'Articuno', 'Moltres']
         self.filter_list_zh = ['水君', '炎帝', '雷公', '闪电鸟', '急冻鸟', '火焰鸟']
         self.filter_list_ext = ['君', '帝', '公', '闪电', '急冻', '火焰']
+        self.encounter_win = [0, 930, 500, 150]
         self.battle_win = [0, 750, 500, 300]
         self.poke_win = [200, 50, 1300, 300]
 
@@ -55,7 +56,12 @@ class ImageScreen(object):
         self.filter_list_zh.append(item)
 
     def read_text(self, url):
-        reader = easyocr.Reader(['ch_sim', 'en'], gpu=True)
+        reader = easyocr.Reader(['en', 'ch_sim'], gpu=False)
+        text = reader.readtext(url, detail=0)
+        return text
+
+    def read_en_text(self, url):
+        reader = easyocr.Reader(['en'], gpu=False)
         text = reader.readtext(url, detail=0)
         return text
 
@@ -160,7 +166,7 @@ class ImageScreen(object):
 
     def check_forget_skill(self):
         time.sleep(1)
-        self.getScreenShot(self.battle_win[0],self.battle_win[1], self.battle_win[2], self.battle_win[3], PokeConfig.IMAGE_URL)
+        self.getScreenShot(self.encounter_win[0],self.encounter_win[1], self.encounter_win[2], self.encounter_win[3], PokeConfig.IMAGE_URL)
         text = self.read_text(PokeConfig.IMAGE_URL)
         print(text)
         return self.recognition_img(text, ['掌握','四个','技能']).isTarget
@@ -204,6 +210,11 @@ class ImageScreen(object):
 
 # l = ['比比乌 LV。 48', '比比鸟 LV。 47 $', '比比乌 LV。 48古', '比比鸟 LV。 48古', '比比鸟 LV。 46古']
 # c = ImageScreen()
+# path = r'C:\Users\Administrator\Desktop\poke_action.png'
+# t = c.read_en_text(path)
+# print(t)
+# t = c.read_text(path)
+# print(t)
 # c.check_default_list()
 # c.grey_test()
 # c.scan_win()
@@ -211,6 +222,7 @@ class ImageScreen(object):
 # print(poke.to_str())
 # c.addFiltItem('TestStr')
 # sp = c.check_default_list()
+# sp = c.check_forget_skill()
 # print(sp.to_str())
 # print(c.check_fire())
 # print(c.check_shiny())

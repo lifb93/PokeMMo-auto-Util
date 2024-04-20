@@ -23,6 +23,6 @@ class ScreenPoke(object):
     def to_str(self):
         text = ('ScreenPoke : '
                 ' isTarget ' + str(self.isTarget) +
-                ' poke ' + self.poke +
+                ' poke ' + str(self.poke) +
                 ' size ' + str(self.size))
         return text
