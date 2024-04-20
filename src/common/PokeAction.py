@@ -39,7 +39,7 @@ class PokeAction(Action):
         sp = None
         while not isFire:
             count = 0
-            while count < 3:
+            while count < 4:
                 if direction in Direction.Horizontal:
                     self.clickButton(PokeConfig.RIGHT_BUTTON, 0.5)
                     self.clickButton(PokeConfig.LEFT_BUTTON, 0.5)
@@ -51,7 +51,7 @@ class PokeAction(Action):
                     self.clickButton(PokeConfig.DOWN_BUTTON, 0.5)
                     self.clickButton(PokeConfig.UP_BUTTON, 0.5)
                 count += 1
-                time.sleep(0.3)
+                # time.sleep(0.3)
 
 
             time.sleep(5)
@@ -229,7 +229,7 @@ class PokeAction(Action):
 
 
     # 进入pm 出来pm逻辑
-    def poke_pm(self, second):
+    def poke_pm(self, run, delay):
         print('准备恢复')
         time.sleep(2)
         self.clickButton(PokeConfig.BTN_MOVEMENT, 1)
@@ -245,7 +245,7 @@ class PokeAction(Action):
         self.clickButton(PokeConfig.A_BUTTON, 0.5)
         time.sleep(1)
         self.clickButton(PokeConfig.A_BUTTON, 0.5)
-        time.sleep(8)
+        time.sleep(delay)
         self.clickButton(PokeConfig.B_BUTTON, 0.5)
         time.sleep(2)
         self.clickButton(PokeConfig.B_BUTTON, 0.5)
@@ -254,7 +254,7 @@ class PokeAction(Action):
         time.sleep(2)
         self.clickButton(PokeConfig.B_BUTTON, 0.5)
         time.sleep(2)
-        self.clickButton(PokeConfig.DOWN_BUTTON, second)
+        self.clickButton(PokeConfig.DOWN_BUTTON, run)
         time.sleep(2)
         return
 

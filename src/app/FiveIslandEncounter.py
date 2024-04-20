@@ -17,7 +17,7 @@ class FiveIslandEncounter(PokeAction):
         if PokeConfig.PAY_DAY_PP_COUNT_CUR > 0 or PokeConfig.GROUP_SKILL_PP_COUNT_CUR > 0:
             return self.poke_random_scent_fire(self.horValue)
         elif PokeConfig.PAY_DAY_PP_COUNT_CUR == 0 and PokeConfig.GROUP_SKILL_PP_COUNT_CUR == 0:
-            self.poke_pm(2.3)
+            self.poke_pm(2.3, 8)
 
             # 刷新pp
             PokeConfig.PAY_DAY_PP_COUNT_CUR = PokeConfig.PAY_DAY_PP_COUNT

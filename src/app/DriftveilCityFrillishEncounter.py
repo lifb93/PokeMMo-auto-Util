@@ -19,7 +19,7 @@ class DriftveilCityFrillishEncounter(PokeAction):
         print("5秒后开始，请切换到游戏界面")
 
     def action_inf(self, res):
-        self.poke_pm(3)
+        self.poke_pm(3, 8)
         self.to_lake()
         return self.poke_sweet_scent_fire(res)
 
