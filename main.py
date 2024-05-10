@@ -21,6 +21,7 @@ from src.app.PokeGreeDragon import PokeGreeDragon
 def __poke_main__():
     path = os.path.join(os.path.expanduser("~"), "Desktop")
     PokeConfig.IMAGE_URL = path + r"/poke_action.png"
+    PokeConfig.SAVE_PATH = path
     print("init image url : %s " % PokeConfig.IMAGE_URL)
 
     # pr = PreparePokeConfig()
