@@ -26,14 +26,15 @@ class FiveIslandEncounter(PokeAction):
 
             # 去草坪
             self.clickButton(PokeConfig.BTN_BICYCLE, 0.2)
+            time.sleep(0.5)
 
-            self.clickButton(PokeConfig.LEFT_BUTTON, 2)
+            self.clickButton(PokeConfig.LEFT_BUTTON, 0.5)
             self.clickButton(PokeConfig.DOWN_BUTTON, 0.3)
 
-            self.clickButton(PokeConfig.RIGHT_BUTTON, 2)
-            self.clickButton(PokeConfig.DOWN_BUTTON, 1)
+            self.clickButton(PokeConfig.RIGHT_BUTTON, 0.5)
+            self.clickButton(PokeConfig.DOWN_BUTTON, 0.3)
             self.clickButton(PokeConfig.RIGHT_BUTTON, 1)
-            self.clickButton(PokeConfig.UP_BUTTON, 1)
+            self.clickButton(PokeConfig.UP_BUTTON, 0.5)
 
         return PokeConfig.DEFAULT_AUTO
 
