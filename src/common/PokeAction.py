@@ -4,6 +4,7 @@ import time
 from src.common import PokeConfig
 from src.common.Action import Action
 from src.common.ImageScreen import ImageScreen
+from src.common.PokeCount import PokeCount
 from src.constants import Direction
 
 
@@ -13,6 +14,7 @@ class PokeAction(Action):
     def __init__(self):
         super(PokeAction, self).__init__()
         self.imageScreen = ImageScreen()
+        self.pokeCount = PokeCount(PokeConfig.SAVE_PATH)
 
     def action_des_and_init(self):
         pass
@@ -139,6 +141,7 @@ class PokeAction(Action):
 
         sp = self.imageScreen.check_default_list()
         isShiny = sp.isTarget
+        self.pokeCount.increament(sp.poke, sp.size)
         print('是否遇到闪光 %d , 出现的精灵是 %s' % (isShiny, sp.to_str()))
         if isShiny:
             print('遇到闪光精灵了！！！')
@@ -158,6 +161,7 @@ class PokeAction(Action):
         text = sp.text
         sp2 = self.imageScreen.check_default_list_with_text(text)
         isShiny = sp2.isTarget
+        self.pokeCount.increament(sp2.poke, sp2.size)
         print('是否遇到闪光 %d , 出现的精灵是 %s' % (isShiny, sp2.to_str()))
         if isShiny:
             print('遇到闪光精灵了！！！')
