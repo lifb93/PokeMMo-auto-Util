@@ -15,10 +15,10 @@ class PokeCount(object):
         cur_f = None
         try:
             if os.path.exists(self.path) is False:
-                f = open(self.path, 'w')
+                f = open(self.path, 'w', encoding="utf8")
 
             if os.path.exists(self.cur_path) is False:
-                cur_f = open(self.cur_path, 'w')
+                cur_f = open(self.cur_path, 'w', encoding="utf8")
         finally:
             if f:
                 f.close()
@@ -29,7 +29,7 @@ class PokeCount(object):
     def load_file(self, path):
         f = None
         try:
-            f = open(path, 'r')
+            f = open(path, 'r', encoding="utf8")
             jsonStr = f.read()
             if jsonStr is None or jsonStr == '':
                 return {}
@@ -41,8 +41,10 @@ class PokeCount(object):
     def save_file(self, path, pokeJson):
         f = None
         try:
-            f = open(path, 'w')
-            f.write(json.dumps(pokeJson))
+            f = open(path, 'w', encoding="utf8")
+            str = json.dumps(pokeJson, ensure_ascii=False)
+            print(str)
+            f.write(str)
         finally:
             if f:
                 f.close()
@@ -88,11 +90,11 @@ class PokeCount(object):
 # path = os.path.join(os.path.expanduser("~"), "Desktop")
 # pokeCount = PokeCount(path)
 # js = pokeCount.load_file(pokeCount.cur_path)
-# pokeCount.increament("test",3)
-# pokeCount.increament("test",3)
-# pokeCount.increament("test3",2)
-# pokeCount.increament("test4",3)
-# pokeCount.increament("test4",2)
+# pokeCount.increament("2323",3)
+# pokeCount.increament("s11c",3)
+# pokeCount.increament("大嘴sdc富",3)
+# pokeCount.increament("大嘴av富",3)
+# pokeCount.increament("香港",3)
 # pokeCount.show_count()
 # print("--------- del -----------")
 # pokeCount.del_poke("test4")
