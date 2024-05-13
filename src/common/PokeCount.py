@@ -9,7 +9,7 @@ class PokeCount(object):
     def __init__(self, path):
         self.file_name = "poke_count"
         self.path = path + "/" + self.file_name + ".json"
-        self.cur_path = path + "/" + self.file_name + "_" + time.strftime("%Y%m%d%H%M", time.localtime()) + "_" + ".json"
+        self.cur_path = path + "/" + self.file_name + "_" + time.strftime("%Y%m%d", time.localtime()) + "_" + ".json"
 
         f = None
         cur_f = None
