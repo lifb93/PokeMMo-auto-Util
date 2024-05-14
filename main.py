@@ -24,6 +24,8 @@ def __poke_main__():
     PokeConfig.SAVE_PATH = path
     print("init image url : %s " % PokeConfig.IMAGE_URL)
 
+    # PokeConfig.TARGET_TIME_STOP = '2024-05-14 17:38'
+
     # pr = PreparePokeConfig()
     # pr.prepare_poke()
     mag = EmeraldMagikarpEncounter()

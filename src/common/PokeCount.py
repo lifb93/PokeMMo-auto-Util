@@ -43,7 +43,7 @@ class PokeCount(object):
         try:
             f = open(path, 'w', encoding="utf8")
             str = json.dumps(pokeJson, ensure_ascii=False)
-            print(str)
+            # print(str)
             f.write(str)
         finally:
             if f:

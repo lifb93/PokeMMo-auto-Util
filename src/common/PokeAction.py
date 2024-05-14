@@ -1,4 +1,4 @@
-
+import datetime
 import time
 
 from src.common import PokeConfig
@@ -29,9 +29,23 @@ class PokeAction(Action):
         while res != PokeConfig.THREAD_STOP:
             res = self.action_inf(res)
             print('执行完毕： %d' % res)
+            if res != PokeConfig.THREAD_STOP:
+                res = self.target_time_stop(PokeConfig.TARGET_TIME_STOP)
 
         if res == PokeConfig.THREAD_STOP:
             print('遇到闪光精灵了！！！')
+
+    def target_time_stop(self, target):
+        if target is None:
+            return PokeConfig.DEFAULT_AUTO
+
+        targetTime = datetime.datetime.strptime(target, "%Y-%m-%d %H:%M").timestamp()
+        now = time.time()
+        if now >= targetTime:
+            print("达到预期时间 %s ", target)
+            return PokeConfig.THREAD_STOP
+        else:
+            return PokeConfig.DEFAULT_AUTO
 
 
     # Horizontal 水平的
@@ -103,8 +117,10 @@ class PokeAction(Action):
                 return PokeConfig.THREAD_STOP
 
             self.clickButton(PokeConfig.BTN_SWEET_SCENT, 0.2)
+            time.sleep(1)
             # sp = self.imageScreen.check_sweet_scent_talk()
             self.clickButton(PokeConfig.A_BUTTON, 0.2)
+            time.sleep(1)
             self.clickButton(PokeConfig.A_BUTTON, 0.2)
 
             time.sleep(1)
@@ -329,3 +345,4 @@ class PokeAction(Action):
 
 # p = PokeAction()
 # p.poke_fire()
+# print(p.target_time_stop(PokeConfig.TARGET_TIME_STOP))

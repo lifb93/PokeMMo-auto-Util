@@ -1,7 +1,8 @@
 
-
+# 指定时间关闭
+TARGET_TIME_STOP = None
 IMAGE_URL = r"D:/poke_action.png"
-SAVE_PATH = r"C:"
+SAVE_PATH = r"D:"
 
 THREAD_STOP = 99
 DEFAULT_AUTO = 1
