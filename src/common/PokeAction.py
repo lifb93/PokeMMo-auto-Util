@@ -282,11 +282,13 @@ class PokeAction(Action):
     # 冲浪
     def surfing(self):
         time.sleep(1)
-        self.clickButton(PokeConfig.A_BUTTON, 0.2)
+        self.clickButton(PokeConfig.A_BUTTON, 0.5)
+        time.sleep(1.5)
+        self.clickButton(PokeConfig.A_BUTTON, 0.5)
         time.sleep(1)
-        self.clickButton(PokeConfig.A_BUTTON, 0.2)
+        self.clickButton(PokeConfig.A_BUTTON, 0.5)
         time.sleep(1)
-        self.clickButton(PokeConfig.A_BUTTON, 0.2)
+        self.clickButton(PokeConfig.A_BUTTON, 0.5)
 
 
     # 第一个技能
