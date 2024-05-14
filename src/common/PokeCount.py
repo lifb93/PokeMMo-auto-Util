@@ -7,6 +7,7 @@ import time
 
 class PokeCount(object):
     def __init__(self, path):
+        self.total = "total"
         self.file_name = "poke_count"
         self.path = path + "/" + self.file_name + ".json"
         self.cur_path = path + "/" + self.file_name + "_" + time.strftime("%Y%m%d", time.localtime()) + "_" + ".json"
@@ -55,6 +56,11 @@ class PokeCount(object):
             pokeMap[poke] = pokeMap[poke] + size
         else:
             pokeMap[poke] = size
+
+        if self.total in pokeMap:
+            pokeMap[self.total] = pokeMap[self.total] + size
+        else:
+            pokeMap[self.total] = size
         self.save_file(self.path, pokeMap)
 
         pokeMap = self.load_file(self.cur_path)
@@ -62,6 +68,11 @@ class PokeCount(object):
             pokeMap[poke] = pokeMap[poke] + size
         else:
             pokeMap[poke] = size
+
+        if self.total in pokeMap:
+            pokeMap[self.total] = pokeMap[self.total] + size
+        else:
+            pokeMap[self.total] = size
         self.save_file(self.cur_path, pokeMap)
 
     def del_poke(self, poke):
@@ -85,10 +96,26 @@ class PokeCount(object):
         for key in pokeMap.keys():
             print("poke: %s , count: %d" % (key, pokeMap[key]))
 
+    def total_init(self):
+        pokeMap = self.load_file(self.path)
+        total = 0
+        for poke in pokeMap:
+            total = pokeMap[poke] + total
+        pokeMap[self.total] = total
+        self.save_file(self.path, pokeMap)
+
+
+        pokeMap = self.load_file(self.cur_path)
+        total = 0
+        for poke in pokeMap:
+            total = pokeMap[poke] + total
+        pokeMap[self.total] = total
+        self.save_file(self.cur_path, pokeMap)
 
 
 # path = os.path.join(os.path.expanduser("~"), "Desktop")
 # pokeCount = PokeCount(path)
+# pokeCount.total_init()
 # js = pokeCount.load_file(pokeCount.cur_path)
 # pokeCount.increament("2323",3)
 # pokeCount.increament("s11c",3)
