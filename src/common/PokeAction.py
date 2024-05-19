@@ -108,25 +108,35 @@ class PokeAction(Action):
     def poke_pp_sweet_scent_fire(self, eat_num):
         currentSentNum = PokeConfig.NUM_SEED_PP
         res = PokeConfig.DEFAULT_AUTO
+        if currentSentNum == 0:
+            res = PokeConfig.THREAD_STOP
+        currentCount = 0
         while currentSentNum > 0:
-            res = self.poke_sweet_scent_fire(PokeConfig.DEFAULT_AUTO)
-            if res == PokeConfig.THREAD_STOP:
-                break
-
-            if currentSentNum < eat_num:
-                return PokeConfig.THREAD_STOP
-
+            time.sleep(2)
             self.clickButton(PokeConfig.BTN_SWEET_SCENT, 0.2)
-            time.sleep(1)
-            # sp = self.imageScreen.check_sweet_scent_talk()
-            self.clickButton(PokeConfig.A_BUTTON, 0.2)
-            time.sleep(1)
-            self.clickButton(PokeConfig.A_BUTTON, 0.2)
 
-            time.sleep(1)
+            sp = self.imageScreen.check_sweet_scent_talk()
+            if sp.isTarget:
+                if currentSentNum < eat_num:
+                    print("pp 果子数量不够了！ 已经使用了 %d 次香甜气息" % currentCount)
+                    return PokeConfig.THREAD_STOP
+                self.clickButton(PokeConfig.A_BUTTON, 0.2)
+                time.sleep(1)
+                self.clickButton(PokeConfig.A_BUTTON, 0.2)
+                time.sleep(1)
 
-            currentSentNum -= eat_num
-            print("吃果子， pp 果子还剩下 %d " % currentSentNum)
+                currentSentNum -= eat_num
+                print("吃果子， pp 果子还剩下 %d " % currentSentNum)
+            else:
+                if PokeConfig.POKE_FIRE:
+                    res = self.poke_fire_with_sp(sp, PokeConfig.FIRST_SKILL)
+                else:
+                    res = self.poke_fire_with_sp(sp, PokeConfig.ESCAPE_SKILL)
+                print('已经使用了 %d 次，识别结果： %d' % (currentCount, res))
+                if res == PokeConfig.THREAD_STOP:
+                    return PokeConfig.THREAD_STOP
+                else:
+                    currentCount += res
 
         return res
 

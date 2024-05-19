@@ -21,11 +21,14 @@ class PokePPSweetScentEncounter(PokeAction):
         PokeConfig.NUM_SEED_PP = int(seed_num)
         print("设置pp种子数量 %s " % PokeConfig.NUM_SEED_PP)
 
+        toFire = input("是否进行战斗？（默认是战斗）[Y/N]:")
+        if toFire != 'Y' and toFire != 'y':
+            PokeConfig.POKE_FIRE = False
+
         # eat_num = input("每次吃pp种子数量？:")
         # self.eat_num = int(eat_num)
         # print("设置pp种子数量 %s " % self.eat_num)
 
-        PokeConfig.POKE_FIRE = False
         print("5秒后开始，请切换到游戏界面")
 
     def action_inf(self, res):

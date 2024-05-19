@@ -177,7 +177,12 @@ class ImageScreen(object):
         return self.recognition_img(text, target)
 
     def check_sweet_scent_talk(self):
-        pass
+        time.sleep(1)
+        self.getScreenShot(self.poke_win[0],self.poke_win[1], self.poke_win[2], self.poke_win[3], PokeConfig.IMAGE_URL)
+        text = self.read_text(PokeConfig.IMAGE_URL)
+        print(text)
+        target = ['pp', '补充']
+        return self.recognition_img(text, target)
 
 
     def grey_test(self):
